@@ -1,9 +1,12 @@
 package ec.edu.ups.appdis.g1.modelo;
 
-public class cliente {
+public class Administrativo {
+
 	private String cedula;
 	private String nombre;
 	private String email;
+	private String rol;
+	
 	public String getCedula() {
 		return cedula;
 	}
@@ -22,5 +25,12 @@ public class cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getRol() {
+		return rol;
+	}
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
+
 	
 }
