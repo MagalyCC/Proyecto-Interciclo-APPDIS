@@ -13,7 +13,7 @@ import javax.sql.DataSource;
 
 public class Resources {
 
-	String dsName = "java:/PostgresDS";
+	String dsName = "java:/Banco";
 
     @Produces
     private Connection createConnection() throws SQLException, NamingException {
