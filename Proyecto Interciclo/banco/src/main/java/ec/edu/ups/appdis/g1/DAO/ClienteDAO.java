@@ -9,10 +9,10 @@ import javax.persistence.Query;
 import ec.edu.ups.appdis.g1.modelo.Cliente;
 
 @Stateless
-public class clienteDAO {
+public class ClienteDAO {
 	private EntityManager em;
 
-    public clienteDAO() {
+    public ClienteDAO() {
     }
      /**
      * Inserta el login mediante el numero el objeto de cliente.
