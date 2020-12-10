@@ -1,7 +1,14 @@
 package ec.edu.ups.appdis.g1.modelo;
 
-public class Administrativo {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Administrativo implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Id
 	private String cedula;
 	private String nombre;
 	private String email;
