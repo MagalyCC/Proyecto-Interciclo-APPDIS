@@ -1,9 +1,12 @@
 package ec.edu.ups.appdis.g1.modelo;
 
+import java.util.Date;
+
 public class Poliza {
 
 	private int NumPoliza;
 	private int folio;
+	private Date fecha;
 	private String tipoOperacionBancaria;
 	private String MetodoPago;
 	private double Saldo;
@@ -11,6 +14,12 @@ public class Poliza {
 	private Cuenta cuenta;
 	
 	
+	public Date getFecha() {
+		return fecha;
+	}
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 	public int getNumPoliza() {
 		return NumPoliza;
 	}
