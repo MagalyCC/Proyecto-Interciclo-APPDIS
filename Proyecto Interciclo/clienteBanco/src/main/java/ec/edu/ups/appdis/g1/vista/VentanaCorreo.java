@@ -9,12 +9,12 @@ package ec.edu.ups.appdis.g1.vista;
  *
  * @author lilia
  */
-public class Correo extends javax.swing.JInternalFrame {
+public class VentanaCorreo extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Correo
      */
-    public Correo() {
+    public VentanaCorreo() {
         initComponents();
     }
 
