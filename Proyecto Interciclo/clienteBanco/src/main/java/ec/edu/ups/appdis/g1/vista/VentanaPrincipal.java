@@ -270,7 +270,8 @@ public void referenciarONACorreo() throws Exception {
             this.co = (CorreoONRemoto) context.lookup(lookupName);
 
         } catch (Exception ex) {
-            System.out.println("hola");
+            System.out.println("Error ventana principal");
+            ex.printStackTrace();
         }
     }
     /**
