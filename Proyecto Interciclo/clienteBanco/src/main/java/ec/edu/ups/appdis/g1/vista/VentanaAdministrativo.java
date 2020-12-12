@@ -8,6 +8,9 @@ package ec.edu.ups.appdis.g1.vista;
 import ec.edu.ups.appdis.g1.modelo.Administrativo;
 import ec.edu.ups.appdis.g1.negocio.AdministrativoONRemoto;
 import java.util.Hashtable;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 
@@ -18,15 +21,18 @@ import javax.naming.InitialContext;
 public class VentanaAdministrativo extends javax.swing.JInternalFrame {
 
     private AdministrativoONRemoto on;
-
+    
     /**
      * Creates new form VentanaAdministrativo
      */
     public VentanaAdministrativo() {
 
+        try {
             initComponents();
-       
 
+        } catch (Exception ex) {
+            Logger.getLogger(VentanaAdministrativo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -46,6 +52,7 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         btnCrear = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setVisible(true);
@@ -65,6 +72,13 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,12 +92,15 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCrear)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCrear)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtCedula, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
                         .addComponent(txtNombre)
                         .addComponent(txtEmail)))
-                .addContainerGap(79, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +120,9 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(btnCrear)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCrear)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -116,9 +135,11 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
         a.setEmail(txtEmail.getText());
         a.setNombre(txtNombre.getText());
         a.setRol("Secretaria");
+        a.setPassword("1");
 
         try {
-            this.referenciarONAdministrativo();
+            Referencia r=new Referencia();
+            r.referenciarONAdministrativo();
             on.registrarAdministrativo(a);
             System.out.print("Guardado OK");
         } catch (Exception e) {
@@ -126,7 +147,6 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnCrearActionPerformed
-
     public void referenciarONAdministrativo() throws Exception {
         try {
             final Hashtable<String, Comparable> jndiProperties = new Hashtable<String, Comparable>();
@@ -150,8 +170,18 @@ public class VentanaAdministrativo extends javax.swing.JInternalFrame {
             throw ex;
         }
     }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        List<Administrativo> a = on.buscarCliente("0107137416");
+        for (int i = 0; i < a.size(); i++) {
+            System.out.println(a.get(i).getPassword());
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

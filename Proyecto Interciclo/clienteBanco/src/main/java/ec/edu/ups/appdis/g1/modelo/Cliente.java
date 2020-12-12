@@ -5,6 +5,7 @@ public class Cliente {
 	private String cedula;
 	private String nombre;
 	private String email;
+        
 	
 	public String getCedula() {
 		return cedula;

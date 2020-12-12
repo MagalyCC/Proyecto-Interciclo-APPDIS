@@ -5,17 +5,38 @@
  */
 package ec.edu.ups.appdis.g1.vista;
 
+import ec.edu.ups.appdis.g1.modelo.Administrativo;
+import ec.edu.ups.appdis.g1.negocio.AdministrativoONRemoto;
+import ec.edu.ups.appdis.g1.negocio.CorreoONRemoto;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aloja
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
 
+    private AdministrativoONRemoto on;
+    Referencia r = new Referencia();
+
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
         initComponents();
+        try {
+
+            r.referenciarONAdministrativo();
+        } catch (Exception ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -31,9 +52,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Jlogin = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtCedula = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         openMenuItem = new javax.swing.JMenuItem();
@@ -51,7 +73,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nombre:");
+        jLabel1.setText("Cedula:");
 
         jLabel2.setText("Contraseña:");
 
@@ -59,6 +81,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -73,11 +102,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAceptar)
-                    .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                        .addComponent(jTextField1)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                    .addGroup(JloginLayout.createSequentialGroup()
+                        .addComponent(btnAceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(JloginLayout.createSequentialGroup()
+                        .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                            .addComponent(txtCedula))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         JloginLayout.setVerticalGroup(
             JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -85,13 +119,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnAceptar)
+                .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAceptar)
+                    .addComponent(jButton1))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -185,15 +221,58 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
-        VentanaAdministrativo va=new VentanaAdministrativo();
+        VentanaAdministrativo va=new   VentanaAdministrativo();
         desktopPane.add(va);
-        
+
     }//GEN-LAST:event_openMenuItemActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        Jlogin.setVisible(false);
-    }//GEN-LAST:event_btnAceptarActionPerformed
 
+        List<Administrativo> a = on.buscarCliente(txtCedula.getText());
+        for (int i = 0; i < a.size(); i++) {
+            String password = a.get(i).getPassword();
+            if (password == txtPassword.getText()) {
+                Jlogin.setVisible(false);
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "hola");
+            }
+
+        }
+
+    }//GEN-LAST:event_btnAceptarActionPerformed
+private CorreoONRemoto co;
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            this.referenciarONACorreo();
+            co.sendAsHtml("aloja619@gmail.com", "lol", "3");
+        } catch (MessagingException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+public void referenciarONACorreo() throws Exception {
+        try {
+            final Hashtable<String, Comparable> jndiProperties = new Hashtable<String, Comparable>();
+            jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY,
+                    "org.wildfly.naming.client.WildFlyInitialContextFactory");
+            jndiProperties.put("jboss.naming.client.ejb.context", true);
+
+            jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
+            jndiProperties.put(Context.SECURITY_PRINCIPAL, "pepe");
+            jndiProperties.put(Context.SECURITY_CREDENTIALS, "pepe");
+
+            final Context context = new InitialContext(jndiProperties);
+
+            final String lookupName = "ejb:/banco/CorreoON!ec.edu.ups.appdis.g1.negocio.CorreoONRemoto";
+
+            this.co = (CorreoONRemoto) context.lookup(lookupName);
+
+        } catch (Exception ex) {
+            System.out.println("hola");
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -242,15 +321,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
     private javax.swing.JMenuItem saveMenuItem;
+    private javax.swing.JTextField txtCedula;
+    private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables
 
 }
