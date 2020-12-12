@@ -1,6 +1,9 @@
 package ec.edu.ups.appdis.g1.negocio;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -25,4 +28,7 @@ public class AdministrativoON implements AdministrativoONRemoto{
 	        }
 	        return true;
 	    }
+	public List<Administrativo> buscarCliente(String cedula){
+		return  daoAdministrativo.getClientes(cedula);
+	}
 }
