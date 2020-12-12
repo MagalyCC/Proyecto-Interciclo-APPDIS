@@ -245,7 +245,7 @@ private CorreoONRemoto co;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             this.referenciarONACorreo();
-            co.sendAsHtml("aloja619@gmail.com", "lol", "3");
+            co.sendAsHtml("lilianacch_@hotmail.com", "lol", "3");
         } catch (MessagingException ex) {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
