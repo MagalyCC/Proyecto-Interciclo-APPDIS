@@ -2,7 +2,7 @@ package ec.edu.ups.appdis.g1.modelo;
 
 import java.util.Date;
 
-import ec.edu.ups.appdis.g1.modelo.Cliente;
+import ec.edu.ups.appdis.g1.modelo.Persona;
 import ec.edu.ups.appdis.g1.modelo.Cuenta;
 
 
@@ -13,7 +13,7 @@ public class Deposito_Retiro {
 	private double valorDeposito;
 	private Date fecha;
 	private Cuenta cuenta;
-	private Cliente cliente;
+	private Persona cliente;
 	
 	public int getNumCuentaDR() {
 		return NumCuentaDR;
@@ -45,10 +45,10 @@ public class Deposito_Retiro {
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
 	}
-	public Cliente getCliente() {
+	public Persona getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Persona cliente) {
 		this.cliente = cliente;
 	}
 	

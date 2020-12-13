@@ -10,7 +10,7 @@ public class Poliza {
 	private String tipoOperacionBancaria;
 	private String MetodoPago;
 	private double Saldo;
-	private Cliente cliente;
+	private Persona cliente;
 	private Cuenta cuenta;
 	
 	
@@ -50,10 +50,10 @@ public class Poliza {
 	public void setSaldo(double saldo) {
 		Saldo = saldo;
 	}
-	public Cliente getCliente() {
+	public Persona getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Persona cliente) {
 		this.cliente = cliente;
 	}
 	public Cuenta getCuenta() {

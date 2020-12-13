@@ -1,7 +1,7 @@
 package ec.edu.ups.appdis.g1.modelo;
 
 import java.util.Date;
-import ec.edu.ups.appdis.g1.modelo.Cliente;
+import ec.edu.ups.appdis.g1.modelo.Persona;
 
 public class Cuenta {
 
@@ -10,7 +10,7 @@ public class Cuenta {
 	private double saldo;
 	private String TipoCuenta;
 	private boolean EstadoCuenta;
-	private Cliente cliente;
+	private Persona cliente;
 	
 	public int getNumerocuenta() {
 		return Numerocuenta;
@@ -42,10 +42,10 @@ public class Cuenta {
 	public void setEstadoCuenta(boolean estadoCuenta) {
 		EstadoCuenta = estadoCuenta;
 	}
-	public Cliente getCliente() {
+	public Persona getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(Persona cliente) {
 		this.cliente = cliente;
 	}
 	

@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import ec.edu.ups.appdis.g1.modelo.Cliente;
+import ec.edu.ups.appdis.g1.modelo.Persona;
 
 @Stateless
 public class ClienteDAO {
@@ -20,7 +20,7 @@ public class ClienteDAO {
      * @return si inserto o no.
      */
     
-    public boolean insert(Cliente cliente) throws Exception {
+    public boolean insert(Persona cliente) throws Exception {
         boolean bandera = true;
     	try {
             System.out.println("si creo que llega aca");
@@ -39,7 +39,7 @@ public class ClienteDAO {
      * @param cliente
      * @remove
      */
-    public void delete(Cliente cliente) throws Exception {
+    public void delete(Persona cliente) throws Exception {
         try {
             System.out.println("borrando");
             em.remove(read(cliente.getCedula()));
@@ -67,7 +67,7 @@ public class ClienteDAO {
      * @merge
      */
 
-    public void update(Cliente cliente) throws Exception {
+    public void update(Persona cliente) throws Exception {
         try {
             em.merge(cliente);
         } catch (Exception e) {
@@ -80,10 +80,10 @@ public class ClienteDAO {
      * @find
      */
 
-    public Cliente read(String id) throws Exception {
+    public Persona read(String id) throws Exception {
         try {
             System.out.println("Estamos aca");
-            return em.find(Cliente.class, id);
+            return em.find(Persona.class, id);
         } catch (Exception e) {
             throw new Exception("Erro leer Cliente " +e.getMessage());
         }
@@ -94,11 +94,11 @@ public class ClienteDAO {
      * @createNamedQuery crea un querry para poder listar
      * @return
      */
-    public List<Cliente> findAll() throws Exception {
+    public List<Persona> findAll() throws Exception {
 
         try {
             Query q = em.createNamedQuery("Cliente.findAll");
-            List<Cliente> lista = q.getResultList();
+            List<Persona> lista = q.getResultList();
             return lista;
         } catch (Exception e) {
             throw new Exception("Erro listar Cliente " +e.getMessage());
@@ -112,12 +112,12 @@ public class ClienteDAO {
      * @return
      */
     
-    public List<Cliente> findAllCodigo(String codigo) throws Exception {
+    public List<Persona> findAllCodigo(String codigo) throws Exception {
 
         try {
             Query q = em.createNamedQuery("Cliente.findAllCodigo");
             q.setParameter("codigo",  "%" + codigo + "%");
-            List<Cliente> lista = q.getResultList();
+            List<Persona> lista = q.getResultList();
             return lista;
         } catch (Exception e) {
             throw new Exception("Erro listar Cliente " +e.getMessage());
@@ -126,11 +126,11 @@ public class ClienteDAO {
     }
     
     
-    public Cliente findByEmail(String codigo) throws Exception {
+    public Persona findByEmail(String codigo) throws Exception {
         try {
             Query q = em.createNamedQuery("Cliente.findByCorreo");
             q.setParameter("correo", codigo);
-            return (Cliente) q.getSingleResult();
+            return (Persona) q.getSingleResult();
         } catch (Exception e) {
             throw new Exception("Error listar Cliente " +e.getMessage());
         }
@@ -148,11 +148,11 @@ public class ClienteDAO {
      * @return
      */
     
-    public Cliente findByID(String id) throws Exception {
+    public Persona findByID(String id) throws Exception {
         try {
             Query q = em.createNamedQuery("Cliente.findById");
             q.setParameter("id", Integer.parseInt(id));
-            return (Cliente) q.getSingleResult();
+            return (Persona) q.getSingleResult();
         } catch (Exception e) {
             throw new Exception("Erro buscar por  ID " +e.getMessage());
         }
@@ -164,11 +164,11 @@ public class ClienteDAO {
      * @createNamedQuery crea un querry para poder listar
      * @return
      */
-    public Cliente findByCedula(String cedula) throws Exception {
+    public Persona findByCedula(String cedula) throws Exception {
         try {
             Query q = em.createNamedQuery("Cliente.findByCedula");
             q.setParameter("cedula", cedula);
-            return (Cliente) q.getSingleResult();
+            return (Persona) q.getSingleResult();
         } catch (Exception e) {
             throw new Exception("Erro buscar por  cedula");
         }
