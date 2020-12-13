@@ -5,44 +5,29 @@ import ec.edu.ups.appdis.g1.modelo.Persona;
 
 public class Cuenta {
 
-	private int idCuenta;
-	private Date FechaCreacion;
-	private double saldo;
-	private String TipoCuenta;
-	private Persona cliente;
+	private int idCodigo;
+	private double monto;
+	private Cuenta Cuenta;
 	
-	public int getIdCuenta() {
-		return idCuenta;
+	public int getIdCodigo() {
+		return idCodigo;
 	}
-	public void setIdCuenta(int idCuenta) {
-		this.idCuenta = idCuenta;
+	public void setIdCodigo(int idCodigo) {
+		this.idCodigo = idCodigo;
 	}
-	public Date getFechaCreacion() {
-		return FechaCreacion;
+	public double getMonto() {
+		return monto;
 	}
-	public void setFechaCreacion(Date fechaCreacion) {
-		FechaCreacion = fechaCreacion;
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
-	public double getSaldo() {
-		return saldo;
+	public Cuenta getCuenta() {
+		return Cuenta;
 	}
-	public void setSaldo(double saldo) {
-		this.saldo = saldo;
-	}
-	public String getTipoCuenta() {
-		return TipoCuenta;
-	}
-	public void setTipoCuenta(String tipoCuenta) {
-		TipoCuenta = tipoCuenta;
-	}
-	public Persona getCliente() {
-		return cliente;
-	}
-	public void setCliente(Persona cliente) {
-		this.cliente = cliente;
+	public void setCuenta(Cuenta cuenta) {
+		Cuenta = cuenta;
 	}
 	
-
 	
 	
 }
