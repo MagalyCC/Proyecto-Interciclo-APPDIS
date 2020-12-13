@@ -8,6 +8,7 @@ package ec.edu.ups.appdis.g1.vista;
 import ec.edu.ups.appdis.g1.modelo.Administrativo;
 import ec.edu.ups.appdis.g1.negocio.AdministrativoONRemoto;
 import ec.edu.ups.appdis.g1.negocio.CorreoONRemoto;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.logging.Level;
@@ -24,19 +25,19 @@ import javax.swing.JOptionPane;
 public class VentanaPrincipal extends javax.swing.JFrame {
 
     private AdministrativoONRemoto on;
-    Referencia r = new Referencia();
+    private CorreoONRemoto co;
 
     /**
      * Creates new form VentanaPrincipal
      */
     public VentanaPrincipal() {
-        initComponents();
         try {
-
-            r.referenciarONAdministrativo();
+            initComponents();
+            this.referenciarONAdministrativo();
         } catch (Exception ex) {
             Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     /**
@@ -55,22 +56,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtCedula = new javax.swing.JTextField();
         txtPassword = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
+        MLogin = new javax.swing.JMenu();
+        MAdministrador = new javax.swing.JMenu();
+        Acrear = new javax.swing.JMenuItem();
+        Apoliza = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        cutMenuItem = new javax.swing.JMenuItem();
-        copyMenuItem = new javax.swing.JMenuItem();
+        MCajero = new javax.swing.JMenu();
+        CCrear = new javax.swing.JMenuItem();
+        CTransacciones = new javax.swing.JMenuItem();
         pasteMenuItem = new javax.swing.JMenuItem();
         deleteMenuItem = new javax.swing.JMenuItem();
-        helpMenu = new javax.swing.JMenu();
+        MAsistente = new javax.swing.JMenu();
         contentMenuItem = new javax.swing.JMenuItem();
         aboutMenuItem = new javax.swing.JMenuItem();
+        MCliente = new javax.swing.JMenu();
+        CResumen = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,48 +87,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/log.JPG"))); // NOI18N
-
         javax.swing.GroupLayout JloginLayout = new javax.swing.GroupLayout(Jlogin);
         Jlogin.setLayout(JloginLayout);
         JloginLayout.setHorizontalGroup(
             JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JloginLayout.createSequentialGroup()
-                .addGap(85, 85, 85)
-                .addComponent(btnAceptar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(72, 72, 72))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JloginLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+            .addGroup(JloginLayout.createSequentialGroup()
+                .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JloginLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPassword))
+                        .addGap(33, 33, 33)
+                        .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(JloginLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtPassword))
+                            .addGroup(JloginLayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(JloginLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JloginLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(101, 101, 101))
+                        .addGap(111, 111, 111)
+                        .addComponent(btnAceptar)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         JloginLayout.setVerticalGroup(
             JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JloginLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(142, 142, 142)
                 .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -135,35 +121,46 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
-                .addGroup(JloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAceptar)
-                    .addComponent(jButton1))
+                .addComponent(btnAceptar)
                 .addGap(19, 19, 19))
         );
 
         desktopPane.add(Jlogin);
         Jlogin.setBounds(90, 50, 340, 260);
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        openMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openMenuItemActionPerformed(evt);
+        MLogin.setText("Cerrar Sesión");
+        MLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MLoginMouseClicked(evt);
             }
         });
-        fileMenu.add(openMenuItem);
+        menuBar.add(MLogin);
 
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
+        MAdministrador.setMnemonic('f');
+        MAdministrador.setText("Administrador");
+
+        Acrear.setMnemonic('o');
+        Acrear.setText("Crear Nuevos");
+        Acrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AcrearActionPerformed(evt);
+            }
+        });
+        MAdministrador.add(Acrear);
+
+        Apoliza.setMnemonic('s');
+        Apoliza.setText("Parametroz Poliza");
+        Apoliza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ApolizaActionPerformed(evt);
+            }
+        });
+        MAdministrador.add(Apoliza);
 
         saveAsMenuItem.setMnemonic('a');
         saveAsMenuItem.setText("Save As ...");
         saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
+        MAdministrador.add(saveAsMenuItem);
 
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
@@ -172,43 +169,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 exitMenuItemActionPerformed(evt);
             }
         });
-        fileMenu.add(exitMenuItem);
+        MAdministrador.add(exitMenuItem);
 
-        menuBar.add(fileMenu);
+        menuBar.add(MAdministrador);
 
-        editMenu.setMnemonic('e');
-        editMenu.setText("Edit");
+        MCajero.setMnemonic('e');
+        MCajero.setText("Cajero");
 
-        cutMenuItem.setMnemonic('t');
-        cutMenuItem.setText("Cut");
-        editMenu.add(cutMenuItem);
+        CCrear.setMnemonic('t');
+        CCrear.setText("Crear Usuario");
+        CCrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CCrearActionPerformed(evt);
+            }
+        });
+        MCajero.add(CCrear);
 
-        copyMenuItem.setMnemonic('y');
-        copyMenuItem.setText("Copy");
-        editMenu.add(copyMenuItem);
+        CTransacciones.setMnemonic('y');
+        CTransacciones.setText("Transacciones");
+        CTransacciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CTransaccionesActionPerformed(evt);
+            }
+        });
+        MCajero.add(CTransacciones);
 
         pasteMenuItem.setMnemonic('p');
         pasteMenuItem.setText("Paste");
-        editMenu.add(pasteMenuItem);
+        MCajero.add(pasteMenuItem);
 
         deleteMenuItem.setMnemonic('d');
         deleteMenuItem.setText("Delete");
-        editMenu.add(deleteMenuItem);
+        MCajero.add(deleteMenuItem);
 
-        menuBar.add(editMenu);
+        menuBar.add(MCajero);
 
-        helpMenu.setMnemonic('h');
-        helpMenu.setText("Help");
+        MAsistente.setMnemonic('h');
+        MAsistente.setText("Asistente");
 
         contentMenuItem.setMnemonic('c');
         contentMenuItem.setText("Contents");
-        helpMenu.add(contentMenuItem);
+        MAsistente.add(contentMenuItem);
 
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
-        helpMenu.add(aboutMenuItem);
+        MAsistente.add(aboutMenuItem);
 
-        menuBar.add(helpMenu);
+        menuBar.add(MAsistente);
+
+        MCliente.setText("Cliente");
+
+        CResumen.setText("Resumen");
+        CResumen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CResumenActionPerformed(evt);
+            }
+        });
+        MCliente.add(CResumen);
+
+        menuBar.add(MCliente);
 
         setJMenuBar(menuBar);
 
@@ -216,11 +235,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
         );
 
         pack();
@@ -230,39 +249,60 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    private void openMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_openMenuItemActionPerformed
+    private void AcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AcrearActionPerformed
         VentanaAdministrativo va=new   VentanaAdministrativo();
         desktopPane.add(va);
-
-    }//GEN-LAST:event_openMenuItemActionPerformed
+    }//GEN-LAST:event_AcrearActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
+        java.util.Date fecha = new Date();
         List<Administrativo> a = on.buscarCliente(txtCedula.getText());
         for (int i = 0; i < a.size(); i++) {
-            String password = a.get(i).getPassword();
-            if (password == txtPassword.getText()) {
-                Jlogin.setVisible(false);
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "hola");
+            try {
+                String email = a.get(i).getEmail();
+                String password = a.get(i).getPassword();
+                String password2 = txtPassword.getText();
+                this.referenciarONACorreo();
+                co.sendAsHtml(email, "Intento de Ingreso Cuenta Bancaria", "Hora de intento: " + fecha);
+                if (password.equals(password2)) {
+                    Jlogin.setVisible(false);
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "La contraseña no es correcto");
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error boton aceptar");
             }
-
         }
-
     }//GEN-LAST:event_btnAceptarActionPerformed
-private CorreoONRemoto co;
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            this.referenciarONACorreo();
-            co.sendAsHtml("lilianacch_@hotmail.com", "lol", "3");
-        } catch (MessagingException ex) {
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (Exception ex) {
-            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-public void referenciarONACorreo() throws Exception {
+
+    private void MLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MLoginMouseClicked
+        Jlogin.setVisible(true);
+        MAdministrador.setVisible(false);
+        MCajero.setVisible(false);
+        MAsistente.setVisible(false);
+    }//GEN-LAST:event_MLoginMouseClicked
+
+    private void ApolizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ApolizaActionPerformed
+        VentanaAdministrarPoliza vap = new VentanaAdministrarPoliza();
+        desktopPane.add(vap);
+    }//GEN-LAST:event_ApolizaActionPerformed
+
+    private void CCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CCrearActionPerformed
+        VentanaCrearCliente vc = new VentanaCrearCliente();
+        desktopPane.add(vc);
+    }//GEN-LAST:event_CCrearActionPerformed
+
+    private void CResumenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CResumenActionPerformed
+        VentanaResumenCuenta vrc = new VentanaResumenCuenta();
+        desktopPane.add(vrc);
+    }//GEN-LAST:event_CResumenActionPerformed
+
+    private void CTransaccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CTransaccionesActionPerformed
+        VentanaCajero vc=new VentanaCajero();
+        desktopPane.add(vc);
+    }//GEN-LAST:event_CTransaccionesActionPerformed
+    public void referenciarONACorreo() throws Exception {
         try {
             final Hashtable<String, Comparable> jndiProperties = new Hashtable<String, Comparable>();
             jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY,
@@ -284,6 +324,31 @@ public void referenciarONACorreo() throws Exception {
             ex.printStackTrace();
         }
     }
+
+    public void referenciarONAdministrativo() throws Exception {
+        try {
+            final Hashtable<String, Comparable> jndiProperties = new Hashtable<String, Comparable>();
+            jndiProperties.put(Context.INITIAL_CONTEXT_FACTORY,
+                    "org.wildfly.naming.client.WildFlyInitialContextFactory");
+            jndiProperties.put("jboss.naming.client.ejb.context", true);
+
+            jndiProperties.put(Context.PROVIDER_URL, "http-remoting://localhost:8080");
+            jndiProperties.put(Context.SECURITY_PRINCIPAL, "pepe");
+            jndiProperties.put(Context.SECURITY_CREDENTIALS, "pepe");
+
+            final Context context = new InitialContext(jndiProperties);
+
+            final String lookupName = "ejb:/banco/AdministrativoON!ec.edu.ups.appdis.g1.negocio.AdministrativoONRemoto";
+
+            this.on = (AdministrativoONRemoto) context.lookup(lookupName);
+
+        } catch (Exception ex) {
+            System.out.println("hola");
+            ex.printStackTrace();
+            throw ex;
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -320,27 +385,28 @@ public void referenciarONACorreo() throws Exception {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Acrear;
+    private javax.swing.JMenuItem Apoliza;
+    private javax.swing.JMenuItem CCrear;
+    private javax.swing.JMenuItem CResumen;
+    private javax.swing.JMenuItem CTransacciones;
     private javax.swing.JPanel Jlogin;
+    private javax.swing.JMenu MAdministrador;
+    private javax.swing.JMenu MAsistente;
+    private javax.swing.JMenu MCajero;
+    private javax.swing.JMenu MCliente;
+    private javax.swing.JMenu MLogin;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JMenuItem contentMenuItem;
-    private javax.swing.JMenuItem copyMenuItem;
-    private javax.swing.JMenuItem cutMenuItem;
     private javax.swing.JMenuItem deleteMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
-    private javax.swing.JMenu helpMenu;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JMenuItem pasteMenuItem;
     private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtPassword;
     // End of variables declaration//GEN-END:variables

@@ -18,20 +18,20 @@ import javax.naming.InitialContext;
  *
  * @author aloja
  */
-public class VentanaCliente extends javax.swing.JInternalFrame {
+public class VentanaCrearCliente extends javax.swing.JInternalFrame {
 
     private AdministrativoONRemoto on;
     
     /**
      * Creates new form VentanaAdministrativo
      */
-    public VentanaCliente() {
+    public VentanaCrearCliente() {
 
         try {
             initComponents();
 
         } catch (Exception ex) {
-            Logger.getLogger(VentanaCliente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VentanaCrearCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -54,6 +54,7 @@ public class VentanaCliente extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
 
         setClosable(true);
+        setTitle("Crear Cliente");
         setVisible(true);
 
         jLabel1.setText("Nombre");
