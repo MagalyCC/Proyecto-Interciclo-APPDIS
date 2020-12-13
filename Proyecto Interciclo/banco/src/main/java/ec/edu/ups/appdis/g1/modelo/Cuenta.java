@@ -5,24 +5,22 @@ import ec.edu.ups.appdis.g1.modelo.Persona;
 
 public class Cuenta {
 
-	private int Numerocuenta;
-	private Date Fecha;
+	private int idCuenta;
+	private Date FechaCreacion;
 	private double saldo;
 	private String TipoCuenta;
-	private boolean EstadoCuenta;
 	private Persona cliente;
-	
-	public int getNumerocuenta() {
-		return Numerocuenta;
+	public int getIdCuenta() {
+		return idCuenta;
 	}
-	public void setNumerocuenta(int numerocuenta) {
-		Numerocuenta = numerocuenta;
+	public void setIdCuenta(int idCuenta) {
+		this.idCuenta = idCuenta;
 	}
-	public Date getFecha() {
-		return Fecha;
+	public Date getFechaCreacion() {
+		return FechaCreacion;
 	}
-	public void setFecha(Date fecha) {
-		Fecha = fecha;
+	public void setFechaCreacion(Date fechaCreacion) {
+		FechaCreacion = fechaCreacion;
 	}
 	public double getSaldo() {
 		return saldo;
@@ -36,18 +34,14 @@ public class Cuenta {
 	public void setTipoCuenta(String tipoCuenta) {
 		TipoCuenta = tipoCuenta;
 	}
-	public boolean isEstadoCuenta() {
-		return EstadoCuenta;
-	}
-	public void setEstadoCuenta(boolean estadoCuenta) {
-		EstadoCuenta = estadoCuenta;
-	}
 	public Persona getCliente() {
 		return cliente;
 	}
 	public void setCliente(Persona cliente) {
 		this.cliente = cliente;
 	}
+	
+
 	
 	
 }
