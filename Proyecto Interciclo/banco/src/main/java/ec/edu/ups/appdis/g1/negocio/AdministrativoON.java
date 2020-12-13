@@ -11,7 +11,7 @@ import javax.inject.Inject;
 import ec.edu.ups.appdis.g1.DAO.AdministrativoDAO;
 import ec.edu.ups.appdis.g1.DAO.ClienteDAO;
 import ec.edu.ups.appdis.g1.modelo.Administrativo;
-import ec.edu.ups.appdis.g1.modelo.Cliente;
+import ec.edu.ups.appdis.g1.modelo.Persona;
 
 @Stateless
 public class AdministrativoON implements AdministrativoONRemoto{
