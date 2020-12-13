@@ -2,7 +2,7 @@ package ec.edu.ups.appdis.g1.modelo;
 
 import java.util.Date;
 
-public class TazaInteres {
+public class Transferencia {
 
 	private Date fecha;
 	private String Descripcion;
