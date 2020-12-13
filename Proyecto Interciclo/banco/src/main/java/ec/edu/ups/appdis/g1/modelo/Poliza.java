@@ -4,13 +4,10 @@ import java.util.Date;
 
 public class Poliza {
 
-	private int NumPoliza;
-	private int folio;
+	private int idPoliza;
 	private Date fecha;
-	private String tipoOperacionBancaria;
-	private String MetodoPago;
-	private double Saldo;
-	private Persona cliente;
+	private double interes;
+	private double monto;
 	private Cuenta cuenta;
 	
 	
@@ -20,41 +17,23 @@ public class Poliza {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public int getNumPoliza() {
-		return NumPoliza;
+	public int getIdPoliza() {
+		return idPoliza;
 	}
-	public void setNumPoliza(int numPoliza) {
-		NumPoliza = numPoliza;
+	public void setIdPoliza(int idPoliza) {
+		this.idPoliza = idPoliza;
 	}
-	public int getFolio() {
-		return folio;
+	public double getInteres() {
+		return interes;
 	}
-	public void setFolio(int folio) {
-		this.folio = folio;
+	public void setInteres(double interes) {
+		this.interes = interes;
 	}
-	public String getTipoOperacionBancaria() {
-		return tipoOperacionBancaria;
+	public double getMonto() {
+		return monto;
 	}
-	public void setTipoOperacionBancaria(String tipoOperacionBancaria) {
-		this.tipoOperacionBancaria = tipoOperacionBancaria;
-	}
-	public String getMetodoPago() {
-		return MetodoPago;
-	}
-	public void setMetodoPago(String metodoPago) {
-		MetodoPago = metodoPago;
-	}
-	public double getSaldo() {
-		return Saldo;
-	}
-	public void setSaldo(double saldo) {
-		Saldo = saldo;
-	}
-	public Persona getCliente() {
-		return cliente;
-	}
-	public void setCliente(Persona cliente) {
-		this.cliente = cliente;
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
 	public Cuenta getCuenta() {
 		return cuenta;
