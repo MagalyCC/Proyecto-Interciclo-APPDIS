@@ -10,6 +10,7 @@ public class Cuenta {
 	private double saldo;
 	private String TipoCuenta;
 	private Persona cliente;
+	
 	public int getIdCuenta() {
 		return idCuenta;
 	}
