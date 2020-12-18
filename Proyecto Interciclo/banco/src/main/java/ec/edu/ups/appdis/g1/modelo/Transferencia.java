@@ -4,41 +4,29 @@ import java.util.Date;
 
 public class Transferencia {
 
-	private Date fecha;
-	private String Descripcion;
-	private String TazasRefeciales;
-	private double PorcentajeAnual;
-	private String TazasMaximas;
+	private int idCodigo;
+	private double monto;
+	private Cuenta cuenta;
 	
-	public Date getFecha() {
-		return fecha;
+	public int getIdCodigo() {
+		return idCodigo;
 	}
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setIdCodigo(int idCodigo) {
+		this.idCodigo = idCodigo;
 	}
-	public String getDescripcion() {
-		return Descripcion;
+	public double getMonto() {
+		return monto;
 	}
-	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+	public void setMonto(double monto) {
+		this.monto = monto;
 	}
-	public String getTazasRefeciales() {
-		return TazasRefeciales;
+	public Cuenta getCuenta() {
+		return cuenta;
 	}
-	public void setTazasRefeciales(String tazasRefeciales) {
-		TazasRefeciales = tazasRefeciales;
+	public void setCuenta(Cuenta cuenta) {
+		this.cuenta = cuenta;
 	}
-	public double getPorcentajeAnual() {
-		return PorcentajeAnual;
-	}
-	public void setPorcentajeAnual(double porcentajeAnual) {
-		PorcentajeAnual = porcentajeAnual;
-	}
-	public String getTazasMaximas() {
-		return TazasMaximas;
-	}
-	public void setTazasMaximas(String tazasMaximas) {
-		TazasMaximas = tazasMaximas;
-	}
+	
+	
 	
 }
