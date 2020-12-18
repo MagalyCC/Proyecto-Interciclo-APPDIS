@@ -1,7 +1,14 @@
 package ec.edu.ups.appdis.g1.modelo;
 
-public class ParametrosPoliza {
-	
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class ParametrosPoliza implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Id
 	private int idParametro;
 	private int diaMin;
 	private int diaMax;
