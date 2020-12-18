@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Transferencia implements Serializable{
@@ -11,6 +13,8 @@ public class Transferencia implements Serializable{
 	@Id
 	private int idCodigo;
 	private double monto;
+	@ManyToOne
+	@JoinColumn
 	private Cuenta cuenta;
 	
 	public int getIdCodigo() {

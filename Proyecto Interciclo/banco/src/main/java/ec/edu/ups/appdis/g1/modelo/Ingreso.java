@@ -4,14 +4,21 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Ingreso implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
 	private int idIngreso;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
-	private Cuenta cuenta;
+	@ManyToOne
+	@JoinColumn
+	private Usuario usuario;
 	
 	public int getIdIngreso() {
 		return idIngreso;
@@ -25,12 +32,13 @@ public class Ingreso implements Serializable{
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public Cuenta getCuenta() {
-		return cuenta;
+	public Usuario getUsuario() {
+		return usuario;
 	}
-	public void setCuenta(Cuenta cuenta) {
-		this.cuenta = cuenta;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
+	
 	
 	
 }

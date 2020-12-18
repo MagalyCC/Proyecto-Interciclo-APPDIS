@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import ec.edu.ups.appdis.g1.modelo.Usuario;
+
 @Stateless
 public class UsuarioDAO {
 	@Inject
