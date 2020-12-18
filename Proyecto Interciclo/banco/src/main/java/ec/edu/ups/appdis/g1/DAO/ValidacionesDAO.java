@@ -55,10 +55,10 @@ public class ValidacionesDAO {
 	        Pattern patroncito = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 	        Matcher comparar=patroncito.matcher(correo);
 	                    if(comparar.find()==true){
-	                        System.out.println("Si humano esto es un correo\n");
+	                        System.out.println("correo es correo\n");
 	                    }
 	                    else{
-	                        System.out.println("No humano estupido esto NO!! es un correo\n");
+	                        System.out.println(" correo incorrecto\n");
 	                    }
 	        return comparar.find();
 	    }
