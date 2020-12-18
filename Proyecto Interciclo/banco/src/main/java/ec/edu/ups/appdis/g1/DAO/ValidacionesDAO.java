@@ -51,19 +51,17 @@ public class ValidacionesDAO {
     
     
         ///validacion de campo correo
-        public boolean validadorCorreo(String email) {
-        Pattern pattern = Pattern
-                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
-        Matcher mather = pattern.matcher(email);
- 
-        if (mather.find() == true) {
-            System.out.println("El email ingresado es válido.");
-        } else {
-            System.out.println("El email ingresado es inválido.");
-        }
-      return false;
-    }
+	  public boolean esCorreo(String correo){
+	        Pattern patroncito = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+	        Matcher comparar=patroncito.matcher(correo);
+	                    if(comparar.find()==true){
+	                        System.out.println("Si humano esto es un correo\n");
+	                    }
+	                    else{
+	                        System.out.println("No humano estupido esto NO!! es un correo\n");
+	                    }
+	        return comparar.find();
+	    }
         
         
         
