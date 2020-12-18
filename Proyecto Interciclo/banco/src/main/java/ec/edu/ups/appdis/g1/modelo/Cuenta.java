@@ -1,10 +1,15 @@
 package ec.edu.ups.appdis.g1.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 import ec.edu.ups.appdis.g1.modelo.Persona;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Cuenta {
-
+@Entity
+public class Cuenta implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Id
 	private int idCuenta;
 	private Date fechaCreacion;
 	private String tipo;

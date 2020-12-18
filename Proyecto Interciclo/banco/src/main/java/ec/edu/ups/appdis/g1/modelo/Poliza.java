@@ -1,9 +1,14 @@
 package ec.edu.ups.appdis.g1.modelo;
 
+import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
-public class Poliza {
-
+@Entity
+public class Poliza implements Serializable{
+	private static final long serialVersionUID=1L;
+	@Id
 	private int idPoliza;
 	private Date fecha;
 	private double interes;
