@@ -8,15 +8,22 @@ import ec.edu.ups.appdis.g1.modelo.Cuenta;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Transaccion implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
 	private int idTransaccion;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
 	private String tipoTransaccion;
 	private double monto;
+	@ManyToOne
+	@JoinColumn
 	private Cuenta cuenta;
 	
 	public int getIdTransaccion() {
