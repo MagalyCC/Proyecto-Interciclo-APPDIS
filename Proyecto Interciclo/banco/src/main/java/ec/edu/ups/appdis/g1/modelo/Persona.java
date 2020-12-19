@@ -38,6 +38,11 @@ public class Persona implements Serializable{
 	public void setNumTelefono(String numTelefono) {
 		this.numTelefono = numTelefono;
 	}
+	@Override
+	public String toString() {
+		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", email=" + email + ", numTelefono=" + numTelefono
+				+ "]";
+	}
 	
 	
 }
