@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import ec.edu.ups.appdis.g1.modelo.Persona;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 
 @Stateless
@@ -36,18 +37,19 @@ public class UsuarioDAO {
 	}
 
 	// DAO buscar
-	public Usuario read(String id) throws Exception {
+	public Usuario read(String correo) throws Exception {
 		try {
-			return em.find(Usuario.class, id);
+			return em.find(Usuario.class, correo);
 		} catch (Exception e) {
-			throw new Exception("Erro leer Cliente " + e.getMessage());
+			throw new Exception("Erro buscar correo " + e.getMessage());
 		}
 	}
 
 	// DAO buscar devuelve lista
-	public List<Usuario> getClientes(String cedula) {
-		String jpql = "Select c from Usuario c";
-		Query q = em.createQuery(jpql, Usuario.class);
-		return (List<Usuario>) q.getResultList();
+	
+	public Persona getUsuarios(String correo) {
+		String jpql = "Select p from Persona p where p.email='"+correo+"'";
+		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
+		return per;
 	}
 }
