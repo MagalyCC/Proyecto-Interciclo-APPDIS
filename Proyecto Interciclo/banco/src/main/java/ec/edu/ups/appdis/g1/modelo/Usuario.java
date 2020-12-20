@@ -6,27 +6,35 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idUsuario;
 	private String rol;
 	private String password;
 	private int estadoEliminado;
 	private int estadoCuenta;
+	
 	@OneToOne
 	@JoinColumn
 	private Persona persona;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 	private List<Ingreso> ingreso=new ArrayList<Ingreso>();
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario")
 	private List<Cuenta> cuenta=new ArrayList<Cuenta>();
+	
 	public int getIdUsuario() {
 		return idUsuario;
 	}
@@ -57,17 +65,23 @@ public class Usuario implements Serializable {
 	public void setEstadoCuenta(int estadoCuenta) {
 		this.estadoCuenta = estadoCuenta;
 	}
+	public List<Ingreso> getIngreso() {
+		return ingreso;
+	}
+	public void setIngreso(List<Ingreso> ingreso) {
+		this.ingreso = ingreso;
+	}
 	public Persona getPersona() {
 		return persona;
 	}
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	public List<Ingreso> getIngreso() {
-		return ingreso;
+	public List<Cuenta> getCuenta() {
+		return cuenta;
 	}
-	public void setIngreso(List<Ingreso> ingreso) {
-		this.ingreso = ingreso;
+	public void setCuenta(List<Cuenta> cuenta) {
+		this.cuenta = cuenta;
 	}
 	
 	

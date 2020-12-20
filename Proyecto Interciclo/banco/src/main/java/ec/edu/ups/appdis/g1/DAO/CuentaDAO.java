@@ -46,9 +46,13 @@ public class CuentaDAO {
 	}
 
 	// DAO buscar devuelve lista
-	public List<Cuenta> getClientes(int id) {
-		String jpql = "Select c from Cuenta c";
+	public List<Persona> getCuenta(String correo) {
+		String jpql = "Select p from Persona p where p.email=?1";
 		Query q = em.createQuery(jpql, Persona.class);
-		return (List<Cuenta>) q.getResultList();
+		q.setParameter(1, correo);
+		return (List<Persona>) q.getResultList();
+		
+		
+		
 	}
 }

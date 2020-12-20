@@ -2,8 +2,11 @@ package ec.edu.ups.appdis.g1.modelo;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Persona implements Serializable{
@@ -11,9 +14,19 @@ public class Persona implements Serializable{
 	@Id
 	private String cedula;
 	private String nombre;
+	private String apellido;
 	private String email;
 	private String numTelefono;
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
+	private Usuario usuario;
 	
+	
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 	public String getCedula() {
 		return cedula;
 	}
@@ -42,6 +55,12 @@ public class Persona implements Serializable{
 	public String toString() {
 		return "Persona [cedula=" + cedula + ", nombre=" + nombre + ", email=" + email + ", numTelefono=" + numTelefono
 				+ "]";
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 	
 	
