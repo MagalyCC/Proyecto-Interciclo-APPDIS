@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -17,7 +18,7 @@ public class Persona implements Serializable{
 	private String apellido;
 	private String email;
 	private String numTelefono;
-	@OneToOne(cascade = CascadeType.ALL, mappedBy = "persona")
+	@OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL, mappedBy = "persona")
 	private Usuario usuario;
 	
 	

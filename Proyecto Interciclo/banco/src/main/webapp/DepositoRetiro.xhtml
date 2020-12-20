@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<h1>TRANSACCION</h1>
+	<h:form>
+		<h:panelGrid columns="3">
+			<h:outputLabel value="Cédula" />
+			<h:inputText value="#{cajeroBean.newPersona.cedula}" />
+			<h:commandButton action="#{cajeroBean.doBuscar}" value="Buscar" />
+			<h:outputLabel value="Nombre" />
+			<h:inputText value="#{cajeroBean.newPersona.nombre}" disabled="true"/>
+			<h:inputText value="#{cajeroBean.newPersona.apellido}" disabled="true"/>
+			<h:outputLabel value="#Cuenta" />
+			<h:inputText value="#{cajeroBean.newPersona.nombre}"/>
+			<h:outputLabel value="" />
+			<h:outputLabel value="Tipo" />
+			<h:selectOneMenu value="#{cajeroBean.newCuenta.tipo}">
+				<f:selectItem itemValue="Retiro" itemLabel="Retiro" />
+				<f:selectItem itemValue="Deposito" itemLabel="Deposito" />
+			</h:selectOneMenu>
+			<h:outputLabel value="" />
+			<h:outputLabel value="Monto" />
+			<h:inputText value="#{cajeroBean.newPersona.nombre}" />
+
+
+			<h:outputLabel value="" />
+			<h:commandButton action="#{cajeroBean.doGuardar}" value="Guardar" />
+		</h:panelGrid>
+	</h:form>
+</body>
+</html>

@@ -53,7 +53,7 @@ public class CajeroON {
 		}
 		return true;
 	}
-	public void agregarCuenta(Usuario usuario, Persona persona, Cuenta cuenta) throws Exception {
+	/*public void agregarCuenta(Usuario usuario, Persona persona, Cuenta cuenta) throws Exception {
 		String correo = persona.getEmail();
 		cuenta.setUsuario(usuario);
 		cuenta.setFechaCreacion(date);
@@ -61,5 +61,8 @@ public class CajeroON {
 		daoCuenta.insert(cuenta);
 		
 		co.sendAsHtml(correo, "Nueva Cuenta", "Su nueva cuenta es de tipo " + cuenta.getTipo());
+	}*/
+	public void transaccionCliente(Persona p) {
+		
 	}
 }

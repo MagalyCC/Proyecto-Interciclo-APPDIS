@@ -33,7 +33,7 @@ public class Cuenta implements Serializable {
 	private Usuario usuario;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
-	private List<Poliza> cuenta = new ArrayList<Poliza>();
+	private List<Poliza> poliza = new ArrayList<Poliza>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
 	private List<Transferencia> transferencia = new ArrayList<Transferencia>();
@@ -81,12 +81,12 @@ public class Cuenta implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public List<Poliza> getCuenta() {
-		return cuenta;
+	public List<Poliza> getPoliza() {
+		return poliza;
 	}
 
-	public void setCuenta(List<Poliza> cuenta) {
-		this.cuenta = cuenta;
+	public void setPoliza(List<Poliza> poliza) {
+		this.poliza = poliza;
 	}
 
 	public List<Transferencia> getTransferencia() {

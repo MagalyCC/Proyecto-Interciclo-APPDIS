@@ -26,8 +26,6 @@ public class AdministrativoBean {
 	public ArrayList<ParametrosPoliza> getList() {
 		if(list==null) {
 			list= new ArrayList<ParametrosPoliza>();
-			
-			
 			for(int i=0; i<6;i++) {
 				ParametrosPoliza p=new ParametrosPoliza();
 				p.setDiaMax(i+30);
