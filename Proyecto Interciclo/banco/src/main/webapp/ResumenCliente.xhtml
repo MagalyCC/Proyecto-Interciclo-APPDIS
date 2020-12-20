@@ -1,12 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
-<body> 
-<h1>RESUMEN CLIENTE</h1>
+<h:head></h:head>
+<body>
+	<h1>RESUMEN CLIENTE</h1>
 	<h:form>
 		<h:panelGrid columns="4">
 			<h:outputText value="#Cuenta"></h:outputText>
@@ -15,10 +15,14 @@
 			<h:outputText value="Saldo"></h:outputText>
 		</h:panelGrid>
 		<h:dataTable value="#{clienteBean.list}" var="tabla">
-			<h:column>#{tabla.usuario.cuenta.get(1)}</h:column>
-			
-		</h:dataTable>
+			<h:column>#{tabla.idCuenta}</h:column>
+			<h:column>#{tabla.tipo}</h:column>
+			<h:column>#{tabla.fechaCreacion}</h:column>
+			<h:column>#{tabla.saldo}</h:column>
 
+		</h:dataTable>
+		<a href="Login.xhtml" title="Login">Login</a>
+		
 	</h:form>
-</body> 
+</body>
 </html>
