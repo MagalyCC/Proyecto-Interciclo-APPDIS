@@ -16,7 +16,7 @@ public class LoginBean {
 	private LoginON lo;
 	private String correo;
 	private String password;
-	
+
 	public String getCorreo() {
 		return correo;
 	}
@@ -34,31 +34,27 @@ public class LoginBean {
 	}
 
 	public String doBuscar() {
-		String ventana=null;
+		String ventana = null;
 		try {
-			String rol=lo.buscarPersona(correo, password);
-			if(rol.equals("Cliente")) {
-				ventana=abrirVentana("ResumenCliente.xhtml");
-				//FacesContext contex = FacesContext.getCurrentInstance();
-				//contex.getExternalContext().redirect("ResumenCliente.xhtml?faces-redirect=true&cedula="+correo);
-			}else if(rol.equals("Secretario")){
-				ventana=abrirVentana("ResumenSecretario.xhtml");
-			}else if(rol.equals("Administrador")){
-				ventana=abrirVentana("ResumenAdministrador.xhtml");
-			}else if(rol.equals("Asistente")){
-				ventana=abrirVentana("ResumenAsistente.xhtml");
-			}else {
+			String rol = lo.buscarPersona(correo, password);
+			if (rol.equals("Cliente")) {
+				ventana = abrirVentana("ResumenCliente.xhtml");
+			} else if (rol.equals("Secretario")) {
+				ventana = abrirVentana("ResumenSecretario.xhtml");
+			} else if (rol.equals("Administrador")) {
+				ventana = abrirVentana("ResumenAdministrador.xhtml");
+			} else if (rol.equals("Asistente")) {
+				ventana = abrirVentana("ResumenAsistente.xhtml");
+			} else {
 				System.out.println("El rol no existe");
 			}
-			
 			return ventana;
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
+
 	public String abrirVentana(String nombre) {
 		return nombre;
 	}
