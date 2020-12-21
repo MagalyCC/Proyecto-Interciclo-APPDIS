@@ -32,13 +32,13 @@
 			<h:inputText value="#{cajeroBean.newCuenta.idCuenta}" />
 			<h:outputLabel value="" />
 			<h:outputLabel value="Tipo" />
-			<h:selectOneMenu value="#{cajeroBean.newCuenta.tipo}">
+			<h:selectOneMenu value="#{cajeroBean.newTransaccion.tipoTransaccion}">
 				<f:selectItem itemValue="Retiro" itemLabel="Retiro" />
 				<f:selectItem itemValue="Deposito" itemLabel="Deposito" />
 			</h:selectOneMenu>
 			<h:outputLabel value="" />
 			<h:outputLabel value="Monto" />
-			<h:inputText value="#{cajeroBean.newCuenta.saldo}" />
+			<h:inputText value="#{cajeroBean.newTransaccion.monto}" />
 
 
 			<h:outputLabel value="" />

@@ -50,4 +50,11 @@ public class PersonaDAO {
 		Query q = em.createQuery(jpql, Persona.class);
 		return (List<Persona>) q.getResultList();
 	}
+	
+	public List<Persona> existePersona(String cedula) {
+		String jpql= "Select c from Persona c where c.cedula =?1";
+		Query q = em.createQuery(jpql, Persona.class);
+		q.setParameter(1, cedula);
+		return (List<Persona>) q.getResultList();
+	}
 }

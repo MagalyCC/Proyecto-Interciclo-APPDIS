@@ -47,17 +47,25 @@ public class CuentaDAO {
 		}
 	}
 
-
 	public Persona getCuenta(String correo) {
-		String jpql = "Select p from Persona p where p.email='"+correo+"'";
+		String jpql = "Select p from Persona p where p.email='" + correo + "'";
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		System.out.println(per.getApellido());
 		return per;
 	}
+
 	public List<Cuenta> getIdCuentas(int id) {
-		String jpql = "Select c from Cuenta c where c.usuario="+id+"";
+		String jpql = "Select c from Cuenta c where c.usuario=" + id + "";
 		Query q = em.createQuery(jpql, Cuenta.class);
 		return (List<Cuenta>) q.getResultList();
 	}
-	
+
+	public void updateJPA(Cuenta cuenta) throws Exception {
+		try {
+			em.merge(cuenta);
+		} catch (Exception e) {
+			throw new Exception("Erro actualizar Cliente " + e.getMessage());
+		}
+	}
+
 }

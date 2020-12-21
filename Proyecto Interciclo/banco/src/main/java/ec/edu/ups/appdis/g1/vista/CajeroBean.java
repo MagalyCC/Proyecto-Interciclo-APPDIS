@@ -1,6 +1,7 @@
 package ec.edu.ups.appdis.g1.vista;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -9,6 +10,7 @@ import javax.inject.Named;
 import ec.edu.ups.appdis.g1.modelo.Cuenta;
 import ec.edu.ups.appdis.g1.modelo.ParametrosPoliza;
 import ec.edu.ups.appdis.g1.modelo.Persona;
+import ec.edu.ups.appdis.g1.modelo.Transaccion;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 import ec.edu.ups.appdis.g1.negocio.AdministrativoON;
 import ec.edu.ups.appdis.g1.negocio.CajeroON;
@@ -21,7 +23,16 @@ public class CajeroBean {
 	private Persona newPersona;
 	private Usuario newUsuario;
 	private Cuenta newCuenta;
+	private Transaccion newTransaccion;
 	private ArrayList<Cuenta> list = null;
+
+	public Transaccion getNewTransaccion() {
+		return newTransaccion;
+	}
+
+	public void setNewTransaccion(Transaccion newTransaccion) {
+		this.newTransaccion = newTransaccion;
+	}
 
 	public ArrayList<Cuenta> getList() {
 		return list;
@@ -39,6 +50,7 @@ public class CajeroBean {
 		newPersona = new Persona();
 		newUsuario = new Usuario();
 		newCuenta = new Cuenta();
+		newTransaccion = new Transaccion();
 	}
 
 	public Persona getNewPersona() {
@@ -67,7 +79,15 @@ public class CajeroBean {
 
 	public String doGuardar() {
 		try {
-			co.crearCuenta(newUsuario, newPersona, newCuenta);
+			List<Persona> existe = co.existePersona(newPersona.getCedula());
+			if (existe.size()==0) {
+				co.crearCuenta(newUsuario, newPersona, newCuenta);
+			} else {
+				System.out.println("Solo crear cuenta");
+				Persona p=co.buscarPersona(newPersona.getCedula());
+				newCuenta.setUsuario(p.getUsuario());
+				co.soloCuenta(newCuenta);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -77,7 +97,9 @@ public class CajeroBean {
 
 	public String doGuardarCuenta() {
 		try {
+
 			co.crearCuenta(newUsuario, newPersona, newCuenta);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -99,7 +121,10 @@ public class CajeroBean {
 
 		return null;
 	}
+
 	public void doTransaccion() {
-		
+		newTransaccion.setCuenta(newCuenta);
+		co.transaccion(newTransaccion);
+		co.actualizarCuenta(newCuenta, newTransaccion);
 	}
 }
