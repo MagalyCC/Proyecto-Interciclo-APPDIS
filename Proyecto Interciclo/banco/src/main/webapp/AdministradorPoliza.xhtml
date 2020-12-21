@@ -7,6 +7,14 @@
 <h:head></h:head>
 <body>
 	<h1>PARAMETROZ POLIZA</h1>
+	<h2>Navegar</h2>
+	<ul>
+		<li><a href="ResumenAdministrador.xhtml" title="Cuenta">Menu
+				Administrador</a></li>
+		<li></li>
+		<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+	</ul>
+	<h2>Listar parametros</h2>
 	<h:form>
 		<h:panelGrid columns="3">
 			<h:outputText value="ValMin"></h:outputText>
@@ -14,11 +22,31 @@
 			<h:outputText value="Porsentaje"></h:outputText>
 		</h:panelGrid>
 		<h:dataTable value="#{administrativoBean.list}" var="tabla">
+			<h:column>#{tabla.idParametro}</h:column>
 			<h:column>#{tabla.diaMin}</h:column>
 			<h:column>#{tabla.diaMax}</h:column>
 			<h:column>#{tabla.monto}</h:column>
 		</h:dataTable>
+		<h2>Editar parametros</h2>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="ID" />
+			<h:inputText value="#{administrativoBean.newPoliza.idParametro}" />
+			<h:commandButton action="#{administrativoBean.doBorrar()}"
+				value="ELIMINAR" />
+			<h:commandButton action="#{administrativoBean.doBuscar()}"
+				value="BUSCAR" />
+			<h:outputLabel value="Dia Minimo" />
+			<h:inputText value="#{administrativoBean.newPoliza.diaMin}" />
 
+			<h:outputLabel value="Dia Maximo" />
+			<h:inputText value="#{administrativoBean.newPoliza.diaMax}" />
+			<h:outputLabel value="Porcentaje" />
+			<h:inputText value="#{administrativoBean.newPoliza.monto}" />
+			<h:commandButton action="#{administrativoBean.doActualizar()}"
+				value="ACTUALIZAR" />
+				<h:commandButton action="#{administrativoBean.doGuardarParametros()}"
+				value="CREAR" />
+		</h:panelGrid>
 	</h:form>
 
 

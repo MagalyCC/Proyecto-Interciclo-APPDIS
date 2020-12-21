@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -34,9 +35,12 @@ public class ClienteBean {
 				list.add(c);
 			}
 		}else {
+			//LoginBean l =new LoginBean();
+			///String correo=l.getCorreo();
+			//FacesContext contex = FacesContext.getCurrentInstance();
+			//contex.getExternalContext().redirect("PaginaPrincipalCliente.xhtml?faces-redirect=true&cedula="+c.getCedula());
+			//contex.getc
 			list =  (List<Cuenta>) co.buscarCuenta("aloja619@gmail.com");
-			System.out.println(list.size());
-			System.out.println(list.get(0).getTipo());
 		}
 		return list;
 	}

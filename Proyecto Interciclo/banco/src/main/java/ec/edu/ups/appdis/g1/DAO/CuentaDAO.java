@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import ec.edu.ups.appdis.g1.modelo.Cuenta;
 import ec.edu.ups.appdis.g1.modelo.Persona;
+import ec.edu.ups.appdis.g1.modelo.Poliza;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 
 @Stateless
@@ -46,31 +47,17 @@ public class CuentaDAO {
 		}
 	}
 
-	// DAO buscar devuelve lista
-	/*public List<Persona> getCuenta(String correo) {
-		String jpql = "Select p from Persona p where p.email=?1";
-		Query q = em.createQuery(jpql, Persona.class);
-		q.setParameter(1, correo);
-		return (List<Persona>) q.getResultList();
-	}*/
+
 	public Persona getCuenta(String correo) {
 		String jpql = "Select p from Persona p where p.email='"+correo+"'";
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		System.out.println(per.getApellido());
 		return per;
 	}
-	/*public int getUsuario(String correo) {
-		String jpql = "Select p from Persona p where p.email='"+correo+"'";
-		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
-		System.out.println(per.getApellido());
-		return per.getUsuario().getIdUsuario();
+	public List<Cuenta> getIdCuentas(int id) {
+		String jpql = "Select c from Cuenta c where c.usuario="+id+"";
+		Query q = em.createQuery(jpql, Cuenta.class);
+		return (List<Cuenta>) q.getResultList();
 	}
-	public List<Cuenta> getCuenta(int idUsuario) {
-		
-		String jpql = "Select p from Usuario p where p.idUsuario="+idUsuario+"";
-		Usuario per = (Usuario) em.createQuery(jpql).getSingleResult();
-		//System.out.println(per.getCuenta());
-		return per.getCuenta();
-	}*/
 	
 }

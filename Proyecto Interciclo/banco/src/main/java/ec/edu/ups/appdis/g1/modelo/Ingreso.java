@@ -3,6 +3,8 @@ package ec.edu.ups.appdis.g1.modelo;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -13,6 +15,7 @@ import javax.persistence.TemporalType;
 public class Ingreso implements Serializable{
 	private static final long serialVersionUID=1L;
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idIngreso;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fecha;
