@@ -7,7 +7,12 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import ec.edu.ups.appdis.g1.modelo.Persona;
-
+/**
+ * 
+ * anotación @Stateless es la que lo convierte en un EJB y 
+ * le indica al contenedor de aplicaciones que debe encargarse de manejarlo
+ *
+ */
 @Stateless
 public class ClienteDAO {
 	private EntityManager em;
