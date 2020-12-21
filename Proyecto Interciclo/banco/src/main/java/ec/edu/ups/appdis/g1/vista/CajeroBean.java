@@ -14,10 +14,17 @@ import ec.edu.ups.appdis.g1.modelo.Transaccion;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 import ec.edu.ups.appdis.g1.negocio.AdministrativoON;
 import ec.edu.ups.appdis.g1.negocio.CajeroON;
-
+/**
+ * 
+ * @Named Es un calificador basado en cadena (String) @Scope : Identifica anotaciones de alcance
+ * @RequestScoped define el alcance en el que se almacenará el bean
+ */
 @Named
 @RequestScoped
 public class CajeroBean {
+	/**
+	 * @Inject identifica un punto el cual una dependencia en una clase o interfaz Java puede ser inyectada en una clase destino
+	 */
 	@Inject
 	private CajeroON co;
 	private Persona newPersona;
@@ -76,7 +83,10 @@ public class CajeroBean {
 	public void setNewCuenta(Cuenta newCuenta) {
 		this.newCuenta = newCuenta;
 	}
-
+/**
+ * Metodo Guardar Datos
+ * @return
+ */
 	public String doGuardar() {
 		try {
 			List<Persona> existe = co.existePersona(newPersona.getCedula());
@@ -94,7 +104,10 @@ public class CajeroBean {
 
 		return null;
 	}
-
+/**
+ * Metodo Guardar Datos Cuenta
+ * @return
+ */
 	public String doGuardarCuenta() {
 		try {
 
@@ -106,7 +119,10 @@ public class CajeroBean {
 
 		return null;
 	}
-
+/**
+ * Metodo Buscar Datos
+ * @return
+ */
 	public String doBuscar() {
 		try {
 			Persona p = co.buscarPersona(newPersona.getCedula());
