@@ -11,19 +11,41 @@
 		<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
 	</ul>
 	<h:form>
-		<h:panelGrid columns="4">
-			<h:outputText value="#Cuenta"></h:outputText>
-			<h:outputText value="Tipo"></h:outputText>
-			<h:outputText value="Fecha"></h:outputText>
-			<h:outputText value="Saldo"></h:outputText>
-		</h:panelGrid>
-		<h:dataTable value="#{clienteBean.list}" var="tabla">
-			<h:column>#{tabla.idCuenta}</h:column>
-			<h:column>#{tabla.tipo}</h:column>
-			<h:column>#{tabla.fechaCreacion}</h:column>
-			<h:column>#{tabla.saldo}</h:column>
-
-		</h:dataTable>
+		
+		<h:panelGrid columns="2" >
+		<h:dataTable value="#{clienteBean.list}" var="tabla" border="2">
+			
+			<h:column>
+         	<f:facet name="header">
+           	 <h:outputText value="Cuenta"></h:outputText>
+         	</f:facet>
+        	 <h:outputText value="#{tabla.idCuenta}"></h:outputText>
+      		</h:column>
+      
+      		<h:column>
+       		  <f:facet name="header">
+         	   <h:outputText value="Tipo"></h:outputText>
+        	 </f:facet>
+        	 <h:outputText value="#{tabla.tipo}"></h:outputText>
+      		</h:column>
+			
+			<h:column>
+        	 <f:facet name="header">
+           	 <h:outputText value="FechaCreacion"></h:outputText>
+        	 </f:facet>
+        	 <h:outputText value="#{tabla.fechaCreacion}"></h:outputText>
+     		 </h:column>
+      
+      		<h:column> 
+       		<f:facet name="header">
+       		 <h:outputText value="Saldo"></h:outputText>
+        	 </f:facet>
+         	 <h:outputText value="#{tabla.saldo}"></h:outputText>
+     		 </h:column>
+      	
+		
+	</h:dataTable>
+	</h:panelGrid>
 		
 	</h:form>
 </body>
