@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ec.edu.ups.appdis.g1.vista","l":"LoginBean"}]
