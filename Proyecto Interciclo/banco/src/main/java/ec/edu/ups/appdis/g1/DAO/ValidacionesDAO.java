@@ -7,15 +7,28 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * 
+ * anotación @Stateless es la que lo convierte en un EJB y 
+ * le indica al contenedor de aplicaciones que debe encargarse de manejarlo
+ *
+ */
 @Stateless
 public class ValidacionesDAO {
+	/**
+	 * anotación @Inject identifica un punto el cual una dependencia en una clase o interfaz 
+	 * Java puede ser inyectada en una clase destino
+	 */
 	@Inject
 	private Connection con;
 	@Inject
 	private EntityManager em;
 	
-	//validacion campo de cedula
+	/**
+	 * validacion campo de cedula
+	 * @param cedula
+	 * @return
+	 */
 	public boolean validadorDeCedula(String cedula) {
 		boolean cedulaCorrecta = false;
 		 int c, suma=0, acum, resta=0;
@@ -50,7 +63,11 @@ public class ValidacionesDAO {
    
     
     
-        ///validacion de campo correo
+        /**
+         * validacion de campo correo
+         * @param correo
+         * @return
+         */
 	  public boolean esCorreo(String correo){
 	        Pattern patroncito = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 	        Matcher comparar=patroncito.matcher(correo);
@@ -66,7 +83,11 @@ public class ValidacionesDAO {
         
         
         
-        //validacion campo letras	
+        /**
+         * validacion campo letras	
+         * @param cadena
+         * @return
+         */
     	static boolean SoloLetras(String cadena){
     		for (int i = 0; i < cadena.length(); i++){
     			char caracter = cadena.toUpperCase().charAt(i);
