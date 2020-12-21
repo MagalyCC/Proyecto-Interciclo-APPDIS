@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/html/template.xhtml">
+	<ui:define name="title">
+          REGISTRO DE DATOS
+    </ui:define>
+	<ui:define name="contenido">
+	<h1> REGISTRO DE DATOS </h1>
+
+<ul>
+		<li><a href="ResumenAdministrador.xhtml" title="Administrador">Menu Administrador</a></li>
+		<li></li>
+		<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+	</ul>
+
+	<ul>
+		<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Cédula" />
+			<h:inputText value="#{administrativoBean.newPersona.cedula}" />
+			<h:outputLabel value="Nombre" />
+			<h:inputText value="#{administrativoBean.newPersona.nombre}" />
+			<h:outputLabel value="Apellido" />
+			<h:inputText value="#{administrativoBean.newPersona.apellido}" />
+			<h:outputLabel value="Correo" />
+			<h:inputText value="#{administrativoBean.newPersona.email}" />
+			<h:outputLabel value="Telefono" />
+			<h:inputText value="#{administrativoBean.newPersona.numTelefono}" />
+			<h:outputLabel value="Rol" />
+			<h:selectOneMenu value="#{administrativoBean.newUsuario.rol}">
+				<f:selectItem itemValue="Administrador" itemLabel="Administrador" />
+				<f:selectItem itemValue="Secretario" itemLabel="Secretario" />
+				<f:selectItem itemValue="Asistente" itemLabel="Asistente" />
+			</h:selectOneMenu>
+			<h:outputLabel value="" />
+			<h:commandButton action="#{administrativoBean.doGuardar}"
+				value="Guardar" />
+			<h:outputLabel value="" />
+		</h:panelGrid>
+	</h:form>
+		
+	</ul>
+	</ui:define>
+</ui:composition>
+
+</html>
