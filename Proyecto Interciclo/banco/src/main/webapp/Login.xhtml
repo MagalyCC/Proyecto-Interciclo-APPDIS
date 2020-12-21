@@ -8,11 +8,12 @@
 <body>
 	<h1>LOGIN</h1>
 	<h:form>
+	<h:messages autoUpdate="true"/>
 		<h:panelGrid columns="2">
 			<h:outputLabel value="Correo" />
-			<h:inputText value="#{loginBean.correo}" />
+			<h:inputText value="#{loginBean.correo}" required="true"/>
 			<h:outputLabel value="Contraseña" />
-			<h:inputText value="#{loginBean.password}" />
+			<h:inputText value="#{loginBean.password}" required="true"/>
 			<h:outputLabel value="" />
 			<h:commandButton action="#{loginBean.doBuscar}"
 				value="LOGIN" />

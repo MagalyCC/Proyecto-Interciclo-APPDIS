@@ -20,20 +20,6 @@ public class ClienteON {
 	private CuentaDAO daoCuenta;
 
 	public List<Cuenta> buscarCuenta(String correo) {
-		/*List<Persona> a = daoCuenta.getCuenta(correo);
-		for (int i = 0; i < a.size(); i++) {
-			try {
-				String tipo = a.get(i).getUsuario().getCuenta().get(i).getTipo();
-				System.out.println("esto");
-				System.out.println(tipo);
-			} catch (Exception ex) {
-
-				System.out.println("Error buscar cuenta");
-			}
-			
-		}*/
 		return daoCuenta.getCuenta(correo).getUsuario().getCuenta();
-		//int id=daoCuenta.getUsuario(correo);
-		//return daoCuenta.getCuenta(id);
 	}
 }

@@ -7,12 +7,17 @@
 <h:head></h:head>
 <body>
 	<h1>CREAR CUENTA CLIENTE</h1>
+	<ul>
+		<li><a href="ResumenSecretario.xhtml" title="Cuenta">Menu
+				Secretario</a></li>
+		<li></li>
+		<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+	</ul>
 	<h:form>
 		<h:panelGrid columns="3">
 			<h:outputLabel value="Cédula" />
 			<h:inputText value="#{cajeroBean.newPersona.cedula}" />
-			<h:commandButton action="#{cajeroBean.doBuscar}"
-				value="Buscar" />
+			<h:commandButton action="#{cajeroBean.doBuscar}" value="Buscar" />
 			<h:outputLabel value="Nombre" />
 			<h:inputText value="#{cajeroBean.newPersona.nombre}" />
 			<h:outputLabel value="" />
@@ -25,11 +30,6 @@
 			<h:outputLabel value="Correo" />
 			<h:inputText value="#{cajeroBean.newPersona.email}" />
 			<h:outputLabel value="" />
-			<h:outputLabel value="Rol" />
-			<h:selectOneMenu value="#{cajeroBean.newUsuario.rol}">
-				<f:selectItem itemValue="Cliente" itemLabel="Cliente" />
-			</h:selectOneMenu>
-			<h:outputLabel value="" />
 			<h:outputLabel value="Tipo" />
 			<h:selectOneMenu value="#{cajeroBean.newCuenta.tipo}">
 				<f:selectItem itemValue="Ahorro" itemLabel="Ahorro" />
@@ -40,8 +40,7 @@
 
 
 			<h:outputLabel value="" />
-			<h:commandButton action="#{cajeroBean.doGuardar}"
-				value="Guardar" />
+			<h:commandButton action="#{cajeroBean.doGuardar}" value="Guardar" />
 		</h:panelGrid>
 	</h:form>
 </body>

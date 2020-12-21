@@ -7,6 +7,9 @@
 <h:head></h:head>
 <body>
 	<h1>RESUMEN CLIENTE</h1>
+	<ul>
+		<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+	</ul>
 	<h:form>
 		<h:panelGrid columns="4">
 			<h:outputText value="#Cuenta"></h:outputText>
@@ -21,7 +24,6 @@
 			<h:column>#{tabla.saldo}</h:column>
 
 		</h:dataTable>
-		<a href="Login.xhtml" title="Login">Login</a>
 		
 	</h:form>
 </body>

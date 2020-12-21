@@ -2,6 +2,7 @@ package ec.edu.ups.appdis.g1.vista;
 
 import java.util.ArrayList;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,26 +16,36 @@ import ec.edu.ups.appdis.g1.negocio.PolizaON;
 @Named
 @RequestScoped
 public class AdministrativoBean {
+	// @EJB
 	@Inject
 	private AdministrativoON ao;
 	@Inject
 	private PolizaON po;
 	private Persona newPersona;
 	private Usuario newUsuario;
-	private ArrayList<ParametrosPoliza> list=null;
-	
+	private ArrayList<ParametrosPoliza> list = null;
+	private ParametrosPoliza newPoliza;
+
+	public ParametrosPoliza getNewPoliza() {
+		return newPoliza;
+	}
+
+	public void setNewPoliza(ParametrosPoliza newPoliza) {
+		this.newPoliza = newPoliza;
+	}
+
 	public ArrayList<ParametrosPoliza> getList() {
-		if(list==null) {
-			list= new ArrayList<ParametrosPoliza>();
-			for(int i=0; i<6;i++) {
-				ParametrosPoliza p=new ParametrosPoliza();
-				p.setDiaMax(i+30);
-				p.setDiaMin(i+60);
+		if (list == null) {
+			list = new ArrayList<ParametrosPoliza>();
+			for (int i = 0; i < 6; i++) {
+				ParametrosPoliza p = new ParametrosPoliza();
+				p.setDiaMax(i + 30);
+				p.setDiaMin(i + 60);
 				p.setMonto(i);
 				list.add(p);
 			}
-		}else {
-			list =(ArrayList<ParametrosPoliza>) po.buscarParametrosLista();
+		} else {
+			list = (ArrayList<ParametrosPoliza>) po.buscarParametrosLista();
 		}
 		return list;
 	}
@@ -50,6 +61,7 @@ public class AdministrativoBean {
 	public void init() {
 		newPersona = new Persona();
 		newUsuario = new Usuario();
+		newPoliza = new ParametrosPoliza();
 	}
 
 	public Persona getNewPersona() {
@@ -59,6 +71,7 @@ public class AdministrativoBean {
 	public void setNewPersona(Persona newPersona) {
 		this.newPersona = newPersona;
 	}
+
 	public Usuario getNewUsuario() {
 		return newUsuario;
 	}
@@ -69,13 +82,58 @@ public class AdministrativoBean {
 
 	public String doGuardar() {
 		try {
-			ao.registrarPersona(newUsuario,newPersona);
+			ao.registrarPersona(newUsuario, newPersona);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
-	
+
+	public String doBorrar() {
+		try {
+			ao.BorrarParametroz(newPoliza.getIdParametro());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public String doBuscar() {
+		try {
+			ParametrosPoliza pp = ao.BuscarParametros(newPoliza.getIdParametro());
+			newPoliza.setDiaMin(pp.getDiaMin());
+			newPoliza.setDiaMax(pp.getDiaMax());
+			newPoliza.setMonto(pp.getMonto());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	public String doActualizar() {
+		try {
+			ao.ActualizaParametros(newPoliza);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+	public String doGuardarParametros() {
+		try {
+			newPoliza.setIdParametro(0);
+			ao.CrearParametros(newPoliza);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 
 }
