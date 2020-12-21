@@ -8,10 +8,17 @@ import javax.inject.Named;
 import ec.edu.ups.appdis.g1.modelo.Persona;
 import ec.edu.ups.appdis.g1.negocio.CajeroON;
 import ec.edu.ups.appdis.g1.negocio.LoginON;
-
+/**
+ * 
+ * @Named Es un calificador basado en cadena (String) @Scope : Identifica anotaciones de alcance
+ * @RequestScoped define el alcance en el que se almacenará el bean
+ */
 @Named
 @RequestScoped
 public class LoginBean {
+	/**
+	 * @Inject identifica un punto el cual una dependencia en una clase o interfaz Java puede ser inyectada en una clase destino
+	 */
 	@Inject
 	private LoginON lo;
 	private String correo;
@@ -32,7 +39,10 @@ public class LoginBean {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+/**
+ * Metodo Guardar Registro
+ * @return
+ */
 	public String doBuscar() {
 		String ventana = null;
 		try {
