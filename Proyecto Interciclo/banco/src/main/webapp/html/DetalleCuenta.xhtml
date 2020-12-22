@@ -6,23 +6,23 @@
 
 <ui:composition template="/html/template.xhtml">
 	<ui:define name="title">
-           Listar Usuarios
+           Administrador
     </ui:define>
 	<ui:define name="contenido">
-	<h1>LOGIN</h1>
-	<h:form>
-	<h:messages autoUpdate="true"/>
-		<h:panelGrid columns="2">
-			<h:outputLabel value="Correo" />
-			<h:inputText value="#{loginBean.correo}" required="true"/>
-			<h:outputLabel value="Contraseña" />
-			<h:inputText value="#{loginBean.password}" required="true"/>
-			<h:outputLabel value="" />
-			<h:commandButton action="#{loginBean.doBuscar}"
-				value="LOGIN" />
-		</h:panelGrid>
-	</h:form>
-	
+		<h1>RESUMEN CLIENTE</h1>
+		<ul>
+			<li><a href="ResumenCliente.xhtml" title="Login">Resumen
+					Cliente</a></li>
+			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+		</ul>
+		<h:form>
+
+			<h:panelGrid columns="2">
+
+			</h:panelGrid>
+
+		</h:form>
+
 	</ui:define>
 </ui:composition>
 

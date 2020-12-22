@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/html/template.xhtml">
+	<ui:define name="title">
+           Administrador
+    </ui:define>
+	<ui:define name="contenido">
+		<h1>Administrar Cuentas</h1>
+		<h2>Navegar</h2>
+		<ul>
+			<li><a href="ResumenAdministrador.xhtml" title="Cuenta">Menu
+					Administrador</a></li>
+			<li></li>
+			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+		</ul>
+		<h2>Listar Usuarios</h2>
+		<h:form>
+
+			<h:panelGrid columns="2">
+				<h:dataTable value="#{administrativoBean.listUsuario}" var="tabla"
+					border="2">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Cedula"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.persona.cedula}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nombre"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.persona.nombre}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Apellido"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.persona.apellido}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Rol"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.rol}"></h:outputText>
+					</h:column>
+
+
+				</h:dataTable>
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<h:outputLabel value="Cedula" />
+				<h:inputText value="#{administrativoBean.newPersona.cedula}" />
+				<h:commandButton action="#{administrativoBean.doBorrarUsuario()}"
+					value="ELIMINAR" />
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>

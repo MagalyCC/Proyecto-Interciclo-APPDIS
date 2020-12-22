@@ -20,10 +20,6 @@ import ec.edu.ups.appdis.g1.negocio.PolizaON;
 @Named
 @RequestScoped
 public class AdministrativoBean {
-	/**
-	 * @Inject identifica un punto el cual una dependencia en una clase o interfaz Java puede ser inyectada en una clase destino
-	 */
-	// @EJB
 	@Inject
 	private AdministrativoON ao;
 	@Inject
@@ -31,7 +27,17 @@ public class AdministrativoBean {
 	private Persona newPersona;
 	private Usuario newUsuario;
 	private ArrayList<ParametrosPoliza> list = null;
+	private ArrayList<Usuario> listUsuario = null;
 	private ParametrosPoliza newPoliza;
+
+	public ArrayList<Usuario> getListUsuario() {
+		listUsuario = (ArrayList<Usuario>) ao.buscarPersonaLista();
+		return listUsuario;
+	}
+
+	public void setListUsuario(ArrayList<Usuario> listUsuario) {
+		this.listUsuario = listUsuario;
+	}
 
 	public ParametrosPoliza getNewPoliza() {
 		return newPoliza;
@@ -41,10 +47,6 @@ public class AdministrativoBean {
 		this.newPoliza = newPoliza;
 	}
 
-	/**
-	 * Metodo Lista
-	 * @return
-	 */
 	public ArrayList<ParametrosPoliza> getList() {
 		if (list == null) {
 			list = new ArrayList<ParametrosPoliza>();
@@ -91,10 +93,6 @@ public class AdministrativoBean {
 		this.newUsuario = newUsuario;
 	}
 
-	/**
-	 * Metodo Guardar Datos
-	 * @return
-	 */
 	public String doGuardar() {
 		try {
 			ao.registrarPersona(newUsuario, newPersona);
@@ -104,10 +102,7 @@ public class AdministrativoBean {
 
 		return null;
 	}
-/**
- * Metodo Borrar Datos
- * @return
- */
+
 	public String doBorrar() {
 		try {
 			ao.BorrarParametroz(newPoliza.getIdParametro());
@@ -117,10 +112,16 @@ public class AdministrativoBean {
 
 		return null;
 	}
-/**
- * Metodo Buscar Datos
- * @return
- */
+	public String doBorrarUsuario() {
+		try {
+			ao.BorrarUsuario(newPersona.getCedula());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 	public String doBuscar() {
 		try {
 			ParametrosPoliza pp = ao.BuscarParametros(newPoliza.getIdParametro());
@@ -134,10 +135,7 @@ public class AdministrativoBean {
 
 		return null;
 	}
-/**
- * Metodo Actualizar Datos
- * @return
- */
+
 	public String doActualizar() {
 		try {
 			ao.ActualizaParametros(newPoliza);
@@ -148,10 +146,7 @@ public class AdministrativoBean {
 
 		return null;
 	}
-	/**
-	 * Metodo guardar parametros 
-	 * @return
-	 */
+
 	public String doGuardarParametros() {
 		try {
 			newPoliza.setIdParametro(0);

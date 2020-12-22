@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/html/template.xhtml">
+	<ui:define name="title">
+           Cliente
+    </ui:define>
+	<ui:define name="contenido">
+		<h1>RESUMEN CLIENTE #{loginBean.correo}</h1>
+		<ul>
+			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+		</ul>
+		<h:form>
+
+			<h:outputLabel value="" />
+			<h:outputLabel value="IDCuenta" />
+			<h:inputText value="#{clienteBean.IDCuenta}" />
+			<h:commandButton action="#{clienteBean.doDetalle}" value="Detalle" />
+			<h:panelGrid columns="2">
+				<h:dataTable value="#{clienteBean.listTransaccion}" var="tabla"
+					border="2">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Cuenta"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.idTransaccion}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Tipo"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.tipoTransaccion}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="FechaCreacion"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.fecha}"></h:outputText>
+					</h:column>
+
+				</h:dataTable>
+			</h:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+
+</html>
