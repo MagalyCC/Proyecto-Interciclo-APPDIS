@@ -73,9 +73,10 @@ public class TransaccionDAO {
  * @return
  */
 	// DAO buscar devuelve lista
-	public List<Transaccion> getClientes(int id) {
-		String jpql = "Select c from Transaccion c";
+	public List<Transaccion> getTransacciones(int id) {
+		String jpql = "Select c from Transaccion c where c.cuenta.idCuenta=?1";
 		Query q = em.createQuery(jpql, Transaccion.class);
+		q.setParameter(1, id);
 		return (List<Transaccion>) q.getResultList();
 	}
 }

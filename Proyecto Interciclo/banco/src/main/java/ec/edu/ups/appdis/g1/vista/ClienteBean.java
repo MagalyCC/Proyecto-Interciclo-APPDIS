@@ -12,45 +12,80 @@ import javax.inject.Named;
 import ec.edu.ups.appdis.g1.modelo.Cuenta;
 import ec.edu.ups.appdis.g1.modelo.ParametrosPoliza;
 import ec.edu.ups.appdis.g1.modelo.Persona;
+import ec.edu.ups.appdis.g1.modelo.Transaccion;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 import ec.edu.ups.appdis.g1.negocio.AdministrativoON;
 import ec.edu.ups.appdis.g1.negocio.ClienteON;
+
 /**
  * 
- * @Named Es un calificador basado en cadena (String) @Scope : Identifica anotaciones de alcance
+ * @Named Es un calificador basado en cadena (String) @Scope : Identifica
+ *        anotaciones de alcance
  * @RequestScoped define el alcance en el que se almacenará el bean
  */
 @Named
 @RequestScoped
 public class ClienteBean {
-	/**
-	 * @Inject identifica un punto el cual una dependencia en una clase o interfaz Java puede ser inyectada en una clase destino
-	 */
 	@Inject
 	private ClienteON co;
-	private List<Cuenta> list=null;
-	Date date=new Date();
-	/**
-	 * Lista de cuentas 
-	 * @return
-	 */
-	public List<Cuenta> getList() {
-		if(list==null) {
-			list= new ArrayList<Cuenta>();
-			for(int i=0; i<6;i++) {
-				Persona p=new Persona();
-				Usuario u=new Usuario();
-				Cuenta c=new Cuenta();
-					c.setTipo("hola");
+	private List<Cuenta> list = null;
+	private List<Transaccion> listTransaccion = null;
+	Date date = new Date();
+	private String correo;
+	private int IDCuenta;
+	@Inject
+	private LoginBean lo;
+
+	public List<Transaccion> getListTransaccion() {
+		if (list == null) {
+			list = new ArrayList<Cuenta>();
+			for (int i = 0; i < 6; i++) {
+				Persona p = new Persona();
+				Usuario u = new Usuario();
+				Cuenta c = new Cuenta();
+				c.setTipo("hola");
 				list.add(c);
 			}
-		}else {
-			//LoginBean l =new LoginBean();
-			///String correo=l.getCorreo();
-			//FacesContext contex = FacesContext.getCurrentInstance();
-			//contex.getExternalContext().redirect("PaginaPrincipalCliente.xhtml?faces-redirect=true&cedula="+c.getCedula());
-			//contex.getc
-			list =  (List<Cuenta>) co.buscarCuenta("aloja619@gmail.com");
+		} else {
+			
+			//listTransaccion=co.buscarTransacciones(1);
+		}
+		return listTransaccion;
+	}
+
+	public void setListTransaccion(List<Transaccion> listTransaccion) {
+		this.listTransaccion = listTransaccion;
+	}
+
+	public int getIDCuenta() {
+		return IDCuenta;
+	}
+
+	public void setIDCuenta(int iDCuenta) {
+		IDCuenta = iDCuenta;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public List<Cuenta> getList() {
+		if (list == null) {
+			list = new ArrayList<Cuenta>();
+			for (int i = 0; i < 6; i++) {
+				Persona p = new Persona();
+				Usuario u = new Usuario();
+				Cuenta c = new Cuenta();
+				c.setTipo("hola");
+				list.add(c);
+			}
+		} else {
+			String cor = lo.getCorreo();
+			list = (List<Cuenta>) co.buscarCuenta(cor);
 		}
 		return list;
 	}
@@ -58,5 +93,16 @@ public class ClienteBean {
 	public void setList(List<Cuenta> list) {
 		this.list = list;
 	}
-	
+
+	public List<Transaccion> doDetalle() {
+		setListTransaccion(listTransaccion=co.buscarTransacciones(IDCuenta));
+		//System.out.println(IDCuenta);
+		//listTransaccion=co.buscarTransacciones(IDCuenta);
+		return listTransaccion;
+
+	}
+	public void buscarTransaccion() {
+		
+	}
+
 }

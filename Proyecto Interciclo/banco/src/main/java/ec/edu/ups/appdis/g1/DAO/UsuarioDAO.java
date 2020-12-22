@@ -76,4 +76,9 @@ public class UsuarioDAO {
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		return per;
 	}
+	public List<Usuario> listaPersonas() {
+		String jpql= "Select c from Usuario c where c.rol='Secretario' or c.rol='Administrador'";
+		Query q = em.createQuery(jpql, Usuario.class);
+		return (List<Usuario>) q.getResultList();
+	}
 }
