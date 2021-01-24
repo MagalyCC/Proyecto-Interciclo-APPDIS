@@ -8,9 +8,11 @@ import javax.inject.Named;
 import ec.edu.ups.appdis.g1.modelo.Persona;
 import ec.edu.ups.appdis.g1.negocio.CajeroON;
 import ec.edu.ups.appdis.g1.negocio.LoginON;
+
 /**
  * 
- * @Named Es un calificador basado en cadena (String) @Scope : Identifica anotaciones de alcance
+ * @Named Es un calificador basado en cadena (String) @Scope : Identifica
+ *        anotaciones de alcance
  * @RequestScoped define el alcance en el que se almacenará el bean
  */
 @Named
@@ -20,14 +22,13 @@ public class LoginBean {
 	private LoginON lo;
 	private String correo;
 	private String password;
-	private int cont = 0;
 
 	public LoginBean() {
 		init();
 	}
 
 	public void init() {
-		correo=new String();
+		correo = new String();
 	}
 
 	public String getCorreo() {
@@ -52,33 +53,31 @@ public class LoginBean {
 	}
 
 	public String doBuscar() {
-
 		String ventana = null;
 		try {
-
-			String rol = lo.buscarPersona(correo, password);
-			if (rol.equals(null)) {
-				cont++;
-				System.out.println(cont);
-
-			} else {
-				if (rol.equals("Cliente")) {
-					ventana = abrirVentana("ResumenCliente.xhtml");
-					ClienteBean cb = new ClienteBean();
-					cb.setCorreo(correo);
-				} else if (rol.equals("Secretario")) {
-					ventana = abrirVentana("ResumenSecretario.xhtml");
-				} else if (rol.equals("Administrador")) {
-					ventana = abrirVentana("ResumenAdministrador.xhtml");
-				} else if (rol.equals("Asistente")) {
-					ventana = abrirVentana("ResumenAsistente.xhtml");
+			int estado = lo.estado(correo);
+			if (estado == 0) {
+				String rol = lo.buscarPersona(correo, password);
+				if (rol.equals(null)) {
 				} else {
-					cont++;
-					System.out.println(cont);
-					System.out.println("El rol no existe");
+					if (rol.equals("Cliente")) {
+						ventana = abrirVentana("ResumenCliente.xhtml");
+						ClienteBean cb = new ClienteBean();
+						//cb.setCorreo(correo);
+					} else if (rol.equals("Secretario")) {
+						ventana = abrirVentana("ResumenSecretario.xhtml");
+					} else if (rol.equals("Administrador")) {
+						ventana = abrirVentana("ResumenAdministrador.xhtml");
+					} else if (rol.equals("Asistente")) {
+						ventana = abrirVentana("ResumenAsistente.xhtml");
+					} else {
+						System.out.println("El rol no existe");
+					}
 				}
+				return ventana;
+			}else {
+				System.out.println("Cuenta bloqueada");
 			}
-			return ventana;
 		} catch (Exception e) {
 			// e.printStackTrace();
 		}

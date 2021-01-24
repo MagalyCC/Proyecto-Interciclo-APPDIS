@@ -40,7 +40,13 @@ public class UsuarioDAO {
 
 		}
 	}
-
+	public void update(Usuario entity) throws Exception {
+        try {
+            em.merge(entity);
+        } catch (Exception e) {
+            throw new Exception("Erro actualizar Cliente " +e.getMessage());
+        }
+    }
 	/**
 	 * Metodo de Borrar Datos
 	 * @param id
@@ -73,6 +79,11 @@ public class UsuarioDAO {
 	
 	public Persona getUsuarios(String correo) {
 		String jpql = "Select p from Persona p where p.email='"+correo+"'";
+		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
+		return per;
+	}
+	public Persona getUsuariosCedula(String cedula) {
+		String jpql = "Select p from Persona p where p.cedula='"+cedula+"'";
 		Persona per = (Persona) em.createQuery(jpql).getSingleResult();
 		return per;
 	}

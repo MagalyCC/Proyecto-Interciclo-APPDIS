@@ -11,44 +11,33 @@
 	<ui:define name="contenido">
 		<h1>RESUMEN CLIENTE #{loginBean.correo}</h1>
 		<ul>
-			<li><a href="DetalleAcceso.xhtml" title="Login">Accesos a
-					la cuenta</a></li>
 			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
 		</ul>
 		<h:form>
-
 			<h:panelGrid columns="2">
-				<h:dataTable value="#{clienteBean.list}" var="tabla" border="2">
+				<h:dataTable value="#{clienteBean.listarAccesos()}" var="tabla"
+					border="2">
 
 					<h:column>
 						<f:facet name="header">
 							<h:outputText value="Cuenta"></h:outputText>
 						</f:facet>
-						<h:outputText value="#{tabla.idCuenta}"></h:outputText>
+						<h:outputText value="#{tabla.idIngreso}"></h:outputText>
 					</h:column>
-
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="Tipo"></h:outputText>
+							<h:outputText value="FechaIngreso"></h:outputText>
 						</f:facet>
-						<h:outputText value="#{tabla.tipo}"></h:outputText>
+						<h:outputText value="#{tabla.fecha}"></h:outputText>
 					</h:column>
-
 					<h:column>
 						<f:facet name="header">
-							<h:outputText value="FechaCreacion"></h:outputText>
+							<h:outputText value="Intento"></h:outputText>
 						</f:facet>
-						<h:outputText value="#{tabla.fechaCreacion}"></h:outputText>
+						<h:outputText value="#{tabla.intento}"></h:outputText>
 					</h:column>
 
-					<h:column>
-						<f:facet name="header">
-							<h:outputText value="Saldo"></h:outputText>
-						</f:facet>
-						<h:outputText value="#{tabla.saldo}"></h:outputText>
-					</h:column>
 				</h:dataTable>
-				<li><a href="ResumenCliente2.xhtml" title="Login">DETALLE</a></li>
 			</h:panelGrid>
 		</h:form>
 

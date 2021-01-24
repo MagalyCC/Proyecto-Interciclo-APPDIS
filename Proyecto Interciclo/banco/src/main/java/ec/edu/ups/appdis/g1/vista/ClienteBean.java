@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ec.edu.ups.appdis.g1.modelo.Cuenta;
+import ec.edu.ups.appdis.g1.modelo.Ingreso;
 import ec.edu.ups.appdis.g1.modelo.ParametrosPoliza;
 import ec.edu.ups.appdis.g1.modelo.Persona;
 import ec.edu.ups.appdis.g1.modelo.Transaccion;
@@ -30,6 +31,7 @@ public class ClienteBean {
 	private ClienteON co;
 	private List<Cuenta> list = null;
 	private List<Transaccion> listTransaccion = null;
+	private List<Ingreso> listIngreso = null;
 	Date date = new Date();
 	private String correo;
 	private int IDCuenta;
@@ -47,8 +49,6 @@ public class ClienteBean {
 				list.add(c);
 			}
 		} else {
-			
-			//listTransaccion=co.buscarTransacciones(1);
 		}
 		return listTransaccion;
 	}
@@ -72,7 +72,7 @@ public class ClienteBean {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-
+	static String cor;
 	public List<Cuenta> getList() {
 		if (list == null) {
 			list = new ArrayList<Cuenta>();
@@ -84,7 +84,7 @@ public class ClienteBean {
 				list.add(c);
 			}
 		} else {
-			String cor = lo.getCorreo();
+			cor = lo.getCorreo();
 			list = (List<Cuenta>) co.buscarCuenta(cor);
 		}
 		return list;
@@ -95,14 +95,12 @@ public class ClienteBean {
 	}
 
 	public List<Transaccion> doDetalle() {
-		setListTransaccion(listTransaccion=co.buscarTransacciones(IDCuenta));
-		//System.out.println(IDCuenta);
-		//listTransaccion=co.buscarTransacciones(IDCuenta);
+		setListTransaccion(listTransaccion = co.buscarTransacciones(IDCuenta));
 		return listTransaccion;
 
 	}
-	public void buscarTransaccion() {
-		
+	public List<Ingreso> listarAccesos(){
+		listIngreso=co.buscarIngresos(cor);
+		return listIngreso;
 	}
-
 }

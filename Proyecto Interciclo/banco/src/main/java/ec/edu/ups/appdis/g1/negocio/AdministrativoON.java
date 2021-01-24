@@ -91,5 +91,15 @@ public class AdministrativoON {
 			e.printStackTrace();
 		}
 	}
-	
+
+	public void desbloquearCuenta(String cedula) {
+		Usuario usuario = daoUsuario.getUsuariosCedula(cedula).getUsuario();
+		try {
+			usuario.setEstadoCuenta(0);
+			daoUsuario.update(usuario);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

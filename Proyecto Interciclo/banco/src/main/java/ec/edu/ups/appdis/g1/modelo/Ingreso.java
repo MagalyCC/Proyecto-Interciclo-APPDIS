@@ -35,6 +35,7 @@ public class Ingreso implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int idIngreso;
+	private String intento;
 	/**
 	 * Anotación @Temporal
 	 * es posible mapear las fechas con la base de datos de una forma simple
@@ -71,7 +72,10 @@ public class Ingreso implements Serializable{
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
-	
-	
+	public String getIntento() {
+		return intento;
+	}
+	public void setIntento(String intento) {
+		this.intento = intento;
+	}	
 }

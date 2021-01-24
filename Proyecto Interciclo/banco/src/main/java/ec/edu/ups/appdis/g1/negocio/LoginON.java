@@ -30,16 +30,23 @@ public class LoginON {
 			registrarIngreso(id);
 			return a.getUsuario().getRol();
 		}else {
+			registrarIngresoFallido(id);
+			bloquearCuenta(id);
 			System.out.println("Mal");
 			co.sendAsHtml(correo, "Intento de ingreso cuenta bancaria", "Horade de intento"+date);
 		}
 		return null;
 		
 	}
+	public int estado(String correo) throws Exception {
+		Usuario id = daoUsuario.getUsuarios(correo).getUsuario();	
+		return id.getEstadoCuenta();
+	}
 	public void registrarIngreso(Usuario id) {
 		Ingreso ingreso=new Ingreso();
 		ingreso.setFecha(date);
 		ingreso.setUsuario(id);
+		ingreso.setIntento("Exitoso");
 		try {
 			daoIngreso.insert(ingreso);
 		} catch (Exception e) {
@@ -47,5 +54,33 @@ public class LoginON {
 			e.printStackTrace();
 		}
 		
+	}
+	public void registrarIngresoFallido(Usuario id) {
+		Ingreso ingreso=new Ingreso();
+		ingreso.setFecha(date);
+		ingreso.setUsuario(id);
+		ingreso.setIntento("Fallido");
+		try {
+			daoIngreso.insert(ingreso);
+		} catch (Exception e) {
+			System.out.println("Error ingresar registro");
+			e.printStackTrace();
+		}
+		
+	}
+	private static int cont=0;
+	public void bloquearCuenta(Usuario usuario) {
+		cont++;
+		System.out.println(cont);
+		if(cont>=3) {
+			try {usuario.setEstadoCuenta(1);
+				daoUsuario.update(usuario);
+				cont=0;
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		System.out.println("Bloquear");	
+		}
 	}
 }
