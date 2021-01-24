@@ -5,20 +5,18 @@
 	xmlns:h="http://java.sun.com/jsf/html">
 
 <ui:composition template="/html/template.xhtml">
-	<ui:define name="title">
-           Listar Usuarios
-    </ui:define>
 	<ui:define name="contenido">
-		<h1>MENU SECRETARIO</h1>
-		<ul>
-			<li><a href="CrearCuenta.xhtml" title="Cuenta">Crear nueva
-					cuenta</a></li>
-			<li></li>
-			<li><a href="DepositoRetiro.xhtml" title="Transaccion">Depositos
-					y Retiros</a></li>
-			<li></li>
-			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
-		</ul>
+	<h1>DESBLOQUEAR</h1>
+	<h:form>
+	<h:messages autoUpdate="true"/>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Cedula" />
+			<h:inputText value="#{administrativoBean.cedula}" required="true"/>
+			<h:commandButton action="#{administrativoBean.Desbloquear}"
+				value="Desbloquear Usuario" />
+		</h:panelGrid>
+	</h:form>
+	
 	</ui:define>
 </ui:composition>
 

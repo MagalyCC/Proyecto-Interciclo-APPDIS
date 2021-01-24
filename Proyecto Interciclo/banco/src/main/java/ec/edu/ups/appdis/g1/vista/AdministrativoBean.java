@@ -29,6 +29,15 @@ public class AdministrativoBean {
 	private ArrayList<ParametrosPoliza> list = null;
 	private ArrayList<Usuario> listUsuario = null;
 	private ParametrosPoliza newPoliza;
+	private String cedula;
+
+	public String getCedula() {
+		return cedula;
+	}
+
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
+	}
 
 	public ArrayList<Usuario> getListUsuario() {
 		listUsuario = (ArrayList<Usuario>) ao.buscarPersonaLista();
@@ -75,6 +84,7 @@ public class AdministrativoBean {
 		newPersona = new Persona();
 		newUsuario = new Usuario();
 		newPoliza = new ParametrosPoliza();
+		cedula = new String();
 	}
 
 	public Persona getNewPersona() {
@@ -158,5 +168,7 @@ public class AdministrativoBean {
 
 		return null;
 	}
-
+	public void Desbloquear() {
+		ao.desbloquearCuenta(cedula);	
+	}
 }
