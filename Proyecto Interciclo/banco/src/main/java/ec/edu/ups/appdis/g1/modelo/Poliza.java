@@ -7,6 +7,8 @@ package ec.edu.ups.appdis.g1.modelo;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -26,6 +28,7 @@ public class Poliza implements Serializable{
 	 * puede ser cualquier tipo de datos soportado por JPA
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPoliza;
 	/**
 	 * Anotación @Temporal
@@ -35,6 +38,9 @@ public class Poliza implements Serializable{
 	private Date fecha;
 	private double interes;
 	private double monto;
+	private String estado;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaFin;
 	/**
 	 * @ManyToOne encarga de generar una relación de muchos a uno 
 	 * @JoinColumn:hace referencia a la columna que es clave externa en la tabla y define la relación
@@ -76,6 +82,18 @@ public class Poliza implements Serializable{
 	}
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
 	}
 	
 	

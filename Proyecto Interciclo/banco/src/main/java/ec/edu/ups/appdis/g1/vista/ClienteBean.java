@@ -37,6 +37,11 @@ public class ClienteBean {
 	private int IDCuenta;
 	@Inject
 	private LoginBean lo;
+	private double monto;
+	private int plazo;
+	private String mensaje;
+	private String mensaje2;
+	static String cor;
 
 	public List<Transaccion> getListTransaccion() {
 		if (list == null) {
@@ -51,6 +56,22 @@ public class ClienteBean {
 		} else {
 		}
 		return listTransaccion;
+	}
+
+	public String getMensaje() {
+		return mensaje;
+	}
+
+	public void setMensaje(String mensaje) {
+		this.mensaje = mensaje;
+	}
+
+	public String getMensaje2() {
+		return mensaje2;
+	}
+
+	public void setMensaje2(String mensaje2) {
+		this.mensaje2 = mensaje2;
 	}
 
 	public void setListTransaccion(List<Transaccion> listTransaccion) {
@@ -72,7 +93,23 @@ public class ClienteBean {
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	static String cor;
+
+	public double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(double monto) {
+		this.monto = monto;
+	}
+
+	public int getPlazo() {
+		return plazo;
+	}
+
+	public void setPlazo(int plazo) {
+		this.plazo = plazo;
+	}
+
 	public List<Cuenta> getList() {
 		if (list == null) {
 			list = new ArrayList<Cuenta>();
@@ -99,8 +136,17 @@ public class ClienteBean {
 		return listTransaccion;
 
 	}
-	public List<Ingreso> listarAccesos(){
-		listIngreso=co.buscarIngresos(cor);
+
+	public List<Ingreso> listarAccesos() {
+		listIngreso = co.buscarIngresos(cor);
 		return listIngreso;
+	}
+
+	public void doSimular() {
+		//mensaje=
+		String string = co.Simulador(monto, plazo);
+		String[] parts = string.split("-");
+		mensaje = parts[0];
+		mensaje2 = parts[1];
 	}
 }
