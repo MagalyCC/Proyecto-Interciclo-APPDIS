@@ -45,8 +45,8 @@ public class PolizaDAO {
 	}
 
 	// DAO buscar devuelve lista
-	public List<Poliza> getClientes(int id) {
-		String jpql = "Select c from Poliza c ";
+	public List<Poliza> getPoliza(int plazo) {
+		String jpql = "Select c from Poliza c where diaMin<"+plazo+"and diaMax>"+plazo;
 		Query q = em.createQuery(jpql, Poliza.class);
 		return (List<Poliza>) q.getResultList();
 	}

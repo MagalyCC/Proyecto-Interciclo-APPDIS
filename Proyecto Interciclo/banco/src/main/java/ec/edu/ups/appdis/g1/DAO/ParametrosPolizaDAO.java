@@ -78,4 +78,10 @@ public class ParametrosPolizaDAO {
 		em.persist(entity);
 		return true;
 	}
+	
+	public List<ParametrosPoliza> getPoliza(int plazo) {
+		String jpql = "Select c from ParametrosPoliza c where diaMin<="+plazo+"and diaMax>="+plazo;
+		Query q = em.createQuery(jpql, ParametrosPoliza.class);
+		return (List<ParametrosPoliza>) q.getResultList();
+	}
 }
