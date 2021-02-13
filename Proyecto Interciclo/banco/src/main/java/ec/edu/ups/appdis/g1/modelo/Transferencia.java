@@ -7,9 +7,13 @@ package ec.edu.ups.appdis.g1.modelo;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 /**
  * 
  * Anotacion @Entity 
@@ -18,44 +22,71 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class Transferencia implements Serializable{
-	private static final long serialVersionUID=1L;
+	private static final long serialVersionUID = 1L;
 	/**
-	 * Anotación @Id
-	 * puede ser cualquier tipo de datos soportado por JPA
+	 * Anotación @Id puede ser cualquier tipo de datos soportado por JPA
 	 */
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCodigo;
 	private double monto;
 	/**
-	 * @ManyToOne encarga de generar una relación de muchos a uno 
-	 * @JoinColumn:hace referencia a la columna que es clave externa en la tabla y define la relación
+	 * @ManyToOne encarga de generar una relación de muchos a uno
+	 * @JoinColumn:hace referencia a la columna que es clave externa en la tabla y
+	 *                  define la relación
 	 */
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fecha;
 	@ManyToOne
 	@JoinColumn
-	private Cuenta cuenta;
+	private Cuenta cuentaenvia;
+	@ManyToOne
+	@JoinColumn
+	private Cuenta cuentarecibe;
+
 	/**
 	 * Generar Getters and Setters
+	 * 
 	 * @return
 	 */
+
 	public int getIdCodigo() {
 		return idCodigo;
 	}
+
 	public void setIdCodigo(int idCodigo) {
 		this.idCodigo = idCodigo;
 	}
+
 	public double getMonto() {
 		return monto;
 	}
+
 	public void setMonto(double monto) {
 		this.monto = monto;
 	}
-	public Cuenta getCuenta() {
-		return cuenta;
+
+	public Cuenta getCuentaenvia() {
+		return cuentaenvia;
 	}
-	public void setCuenta(Cuenta cuenta) {
-		this.cuenta = cuenta;
+
+	public void setCuentaenvia(Cuenta cuentaenvia) {
+		this.cuentaenvia = cuentaenvia;
 	}
-	
-	
-	
+
+	public Cuenta getCuentarecibe() {
+		return cuentarecibe;
+	}
+
+	public void setCuentarecibe(Cuenta cuentarecibe) {
+		this.cuentarecibe = cuentarecibe;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
 }

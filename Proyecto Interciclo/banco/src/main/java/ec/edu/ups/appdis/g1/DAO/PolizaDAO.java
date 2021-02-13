@@ -8,6 +8,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import ec.edu.ups.appdis.g1.modelo.Cuenta;
+import ec.edu.ups.appdis.g1.modelo.ParametrosPoliza;
 import ec.edu.ups.appdis.g1.modelo.Poliza;
 
 @Stateless
@@ -43,10 +45,21 @@ public class PolizaDAO {
 			throw new Exception("Erro leer Cliente " + e.getMessage());
 		}
 	}
-
+	public void updateJPA(Poliza entity) throws Exception {
+		try {
+			em.merge(entity);
+		} catch (Exception e) {
+			throw new Exception("Erro actualizar Poliza " + e.getMessage());
+		}
+	}
 	// DAO buscar devuelve lista
-	public List<Poliza> getPoliza(int plazo) {
+	/*public List<Poliza> getPoliza(int plazo) {
 		String jpql = "Select c from Poliza c where diaMin<"+plazo+"and diaMax>"+plazo;
+		Query q = em.createQuery(jpql, Poliza.class);
+		return (List<Poliza>) q.getResultList();
+	}*/
+	public List<Poliza> getPoliza() {
+		String jpql = "Select c from Poliza c ";
 		Query q = em.createQuery(jpql, Poliza.class);
 		return (List<Poliza>) q.getResultList();
 	}
