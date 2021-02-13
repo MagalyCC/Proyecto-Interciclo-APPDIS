@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd%22%3E">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/html/template.xhtml">
+	<ui:define name="title">
+           Listar Usuarios
+    </ui:define>
+	<ui:define name="contenido">
+		<h1>APROVAR POLIZA</h1>
+		<ul>
+			<li><a href="ResumenAsistente.xhtml" title="Cuenta">Crear
+					nueva cuenta</a></li>
+			<li></li>
+			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
+		</ul>
+		<h2>Listar parametros</h2>
+		<h:form>
+
+			<h:panelGrid columns="2">
+				<h:dataTable value="#{asistenteBean.list}" var="tabla" border="2">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="IdPoliza"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.idPoliza}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Estado"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.estado}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Interes"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.interes}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Monto"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.monto}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Nombre"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.cuenta.usuario.persona.nombre}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Cedula"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.cuenta.usuario.persona.cedula}"></h:outputText>
+					</h:column>
+
+				</h:dataTable>
+			</h:panelGrid>
+
+
+			<h2>Aceptar Poliza</h2>
+			<h:panelGrid columns="2">
+				<h:outputLabel value="ID" />
+				<h:inputText value="#{asistenteBean.idPoliza}" />
+				<h:commandButton
+					action="#{asistenteBean.aceptarPoliza()}"
+					value="Aceptar" />
+			</h:panelGrid>
+
+
+
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

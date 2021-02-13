@@ -66,8 +66,10 @@ public class Cuenta implements Serializable {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
 	private List<Poliza> poliza = new ArrayList<Poliza>();
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
-	private List<Transferencia> transferencia = new ArrayList<Transferencia>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentaenvia")
+	private List<Transferencia> transferenciaEnvia = new ArrayList<Transferencia>();
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuentarecibe")
+	private List<Transferencia> transferenciaRecibe = new ArrayList<Transferencia>();
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "cuenta")
 	private List<Transaccion> transaccion = new ArrayList<Transaccion>();
@@ -125,12 +127,20 @@ public class Cuenta implements Serializable {
 		this.poliza = poliza;
 	}
 
-	public List<Transferencia> getTransferencia() {
-		return transferencia;
+	public List<Transferencia> getTransferenciaEnvia() {
+		return transferenciaEnvia;
 	}
 
-	public void setTransferencia(List<Transferencia> transferencia) {
-		this.transferencia = transferencia;
+	public void setTransferenciaEnvia(List<Transferencia> transferenciaEnvia) {
+		this.transferenciaEnvia = transferenciaEnvia;
+	}
+
+	public List<Transferencia> getTransferenciaRecibe() {
+		return transferenciaRecibe;
+	}
+
+	public void setTransferenciaRecibe(List<Transferencia> transferenciaRecibe) {
+		this.transferenciaRecibe = transferenciaRecibe;
 	}
 
 	public List<Transaccion> getTransaccion() {

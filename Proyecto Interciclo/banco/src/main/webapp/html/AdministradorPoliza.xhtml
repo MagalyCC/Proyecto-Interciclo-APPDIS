@@ -20,39 +20,40 @@
 		<h2>Listar parametros</h2>
 		<h:form>
 
-			<h:panelGrid columns="2" >
-		<h:dataTable value="#{administrativoBean.list}" var="tabla" border="2">
-			
-			<h:column>
-         	<f:facet name="header">
-           	 <h:outputText value="IdParametro"></h:outputText>
-         	</f:facet>
-        	 <h:outputText value="#{tabla.idParametro}"></h:outputText>
-      		</h:column>
-      
-      		<h:column>
-       		  <f:facet name="header">
-         	   <h:outputText value="ValMin"></h:outputText>
-        	 </f:facet>
-        	 <h:outputText value="#{tabla.diaMin}"></h:outputText>
-      		</h:column>
-			
-			<h:column>
-        	 <f:facet name="header">
-           	 <h:outputText value="ValMax"></h:outputText>
-        	 </f:facet>
-        	 <h:outputText value="#{tabla.diaMax}"></h:outputText>
-     		 </h:column>
-      
-      		<h:column> 
-       		<f:facet name="header">
-       		 <h:outputText value="Monto"></h:outputText>
-        	 </f:facet>
-         	 <h:outputText value="#{tabla.monto}"></h:outputText>
-     		 </h:column>
-      	
-		</h:dataTable>
-		</h:panelGrid>
+			<h:panelGrid columns="2">
+				<h:dataTable value="#{administrativoBean.list}" var="tabla"
+					border="2">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="IdParametro"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.idParametro}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ValMin"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.diaMin}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="ValMax"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.diaMax}"></h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Monto"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla.monto}"></h:outputText>
+					</h:column>
+
+				</h:dataTable>
+			</h:panelGrid>
 
 
 			<h2>Editar parametros</h2>

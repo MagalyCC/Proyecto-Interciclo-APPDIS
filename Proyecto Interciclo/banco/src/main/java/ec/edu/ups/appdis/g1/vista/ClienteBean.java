@@ -1,6 +1,7 @@
 package ec.edu.ups.appdis.g1.vista;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import ec.edu.ups.appdis.g1.modelo.Transaccion;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 import ec.edu.ups.appdis.g1.negocio.AdministrativoON;
 import ec.edu.ups.appdis.g1.negocio.ClienteON;
+import ec.edu.ups.appdis.g1.negocio.PolizaON;
 
 /**
  * 
@@ -37,6 +39,8 @@ public class ClienteBean {
 	private int IDCuenta;
 	@Inject
 	private LoginBean lo;
+	@Inject
+	private PolizaON po;
 	private double monto;
 	private int plazo;
 	private String mensaje;
@@ -143,10 +147,21 @@ public class ClienteBean {
 	}
 
 	public void doSimular() {
-		//mensaje=
 		String string = co.Simulador(monto, plazo);
 		String[] parts = string.split("-");
 		mensaje = parts[0];
 		mensaje2 = parts[1];
+	}
+	
+	public void doPoliza() throws Exception {
+		correo="aloja619";
+		po.SolicitarPoliza(correo, monto, plazo);
+		//System.out.println(date);
+		//date.setDate(35);
+		//System.out.println(date);
+		
+		
+		
+		
 	}
 }

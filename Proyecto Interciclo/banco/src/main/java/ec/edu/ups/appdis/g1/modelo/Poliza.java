@@ -38,6 +38,7 @@ public class Poliza implements Serializable{
 	private Date fecha;
 	private double interes;
 	private double monto;
+	private int plazo;
 	private String estado;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaFin;
@@ -94,6 +95,12 @@ public class Poliza implements Serializable{
 	}
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
+	}
+	public int getPlazo() {
+		return plazo;
+	}
+	public void setPlazo(int plazo) {
+		this.plazo = plazo;
 	}
 	
 	
