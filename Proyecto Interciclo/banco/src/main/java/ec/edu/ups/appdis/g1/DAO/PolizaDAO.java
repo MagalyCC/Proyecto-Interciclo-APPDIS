@@ -63,4 +63,9 @@ public class PolizaDAO {
 		Query q = em.createQuery(jpql, Poliza.class);
 		return (List<Poliza>) q.getResultList();
 	}
+	public List<Poliza> getPolizaAprovada(int numCuenta) {
+		String jpql = "Select c from Poliza c where cuenta="+numCuenta;
+		Query q = em.createQuery(jpql, Poliza.class);
+		return (List<Poliza>) q.getResultList();
+	}
 }

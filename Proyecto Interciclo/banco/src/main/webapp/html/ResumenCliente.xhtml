@@ -50,8 +50,54 @@
 						<h:outputText value="#{tabla.saldo}"></h:outputText>
 					</h:column>
 				</h:dataTable>
+				
+			<li><a href="SolicitudPoliza.xhtml" title="Solicitar">Solicitar</a></li>
+			
+				<h:dataTable value="#{clienteBean.listPoliza}" var="tabla2"
+					border="2">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="IDPoliza"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla2.idPoliza}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Plazo"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla2.plazo}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Valor Diario"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla2.monto}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Interes"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla2.interes}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Fecha vencimiento"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla2.fechaFin}"></h:outputText>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Estado"></h:outputText>
+						</f:facet>
+						<h:outputText value="#{tabla2.estado}"></h:outputText>
+					</h:column>
+
+
+				</h:dataTable>
 				<li><a href="ResumenCliente2.xhtml" title="Login">DETALLE</a></li>
 			</h:panelGrid>
+			
 		</h:form>
 
 	</ui:define>

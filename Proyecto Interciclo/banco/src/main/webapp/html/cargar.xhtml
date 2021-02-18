@@ -9,20 +9,11 @@
            Listar Usuarios
     </ui:define>
 	<ui:define name="contenido">
-		<h1>Solicitud Poliza</h1>
-		<ul>
-			<li><a href="Login.xhtml" title="Login">Cerrar Sesion</a></li>
-		</ul>
+		<h1>LOGIN</h1>
 		<h:form>
-			<h:messages autoUpdate="true" />
-			<h:panelGrid columns="2">
-				<h:outputLabel value="Monto" />
-				<h:inputText value="#{clienteBean.monto}" />
-				<h:outputLabel value="Plazo" />
-				<h:inputText value="#{clienteBean.plazo}" />
-				<h:outputLabel value="" />
-				<h:commandButton action="#{clienteBean.doPoliza()}" value="Aceptar" />
-			</h:panelGrid>
+			<h:commandButton action="#{clienteBean.doCargar()}"
+				value="LOGIN" />
+
 		</h:form>
 
 	</ui:define>

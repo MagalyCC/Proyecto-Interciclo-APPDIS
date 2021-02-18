@@ -110,7 +110,14 @@ public class CajeroBean {
 
 		return null;
 	}
-
+public void doCuentaBanco() {
+	try {
+		co.crearBanco();
+	} catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
 	public String doBuscar() {
 		try {
 			Persona p = co.buscarPersona(newPersona.getCedula());
