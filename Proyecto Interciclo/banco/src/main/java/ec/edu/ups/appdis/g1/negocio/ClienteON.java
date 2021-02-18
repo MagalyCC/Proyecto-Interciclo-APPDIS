@@ -1,9 +1,12 @@
 package ec.edu.ups.appdis.g1.negocio;
 
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import ec.edu.ups.appdis.g1.DAO.CuentaDAO;
@@ -17,6 +20,7 @@ import ec.edu.ups.appdis.g1.modelo.Cuenta;
 import ec.edu.ups.appdis.g1.modelo.Ingreso;
 import ec.edu.ups.appdis.g1.modelo.ParametrosPoliza;
 import ec.edu.ups.appdis.g1.modelo.Persona;
+import ec.edu.ups.appdis.g1.modelo.Poliza;
 import ec.edu.ups.appdis.g1.modelo.Transaccion;
 import ec.edu.ups.appdis.g1.modelo.Usuario;
 
@@ -28,6 +32,8 @@ public class ClienteON {
 	@Inject
 	private CuentaDAO daoCuenta;
 	@Inject
+	private PolizaDAO daoPoliza;
+	@Inject
 	private IngresoDAO daoIngreso;
 	@Inject
 	private TransaccionDAO daoTransaccion;
@@ -36,6 +42,27 @@ public class ClienteON {
 
 	public List<Cuenta> buscarCuenta(String correo) {
 		return daoCuenta.getCuenta(correo).getUsuario().getCuenta();
+	}
+	public List<Cuenta> buscarPoliza(String correo) {
+		return daoCuenta.getCuenta(correo).getUsuario().getCuenta();
+	}
+	public Cuenta readCuenta(int id) {
+		try {
+			return daoCuenta.read(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	public Poliza readPoliza(int id) {
+		try {
+			return daoPoliza.read(id);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	public List<Transaccion> buscarTransacciones(int id) {
 		return daoTransaccion.getTransacciones(id);
@@ -70,4 +97,5 @@ public class ClienteON {
 		
 		return interes;
 	}
+	
 }

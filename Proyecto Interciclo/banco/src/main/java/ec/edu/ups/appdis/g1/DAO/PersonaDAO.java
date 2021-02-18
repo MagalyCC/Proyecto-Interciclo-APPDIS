@@ -1,6 +1,11 @@
 package ec.edu.ups.appdis.g1.DAO;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,7 +13,10 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import ec.edu.ups.appdis.g1.modelo.Cuenta;
+import ec.edu.ups.appdis.g1.modelo.Documentos;
 import ec.edu.ups.appdis.g1.modelo.Persona;
+
 /**
  * 
  * anotación @Stateless es la que lo convierte en un EJB y 
@@ -31,15 +39,21 @@ public class PersonaDAO {
 	 * @param persona
 	 * @throws Exception
 	 */
-	public void insert(Persona persona) throws Exception {
+	public void insert(Persona entity) throws Exception {
 		try {
-			em.persist(persona);
+			em.persist(entity);
 		} catch (Exception e) {
 			throw new Exception("Erro ingreso Cliente " + e.getMessage());
 
 		}
 	}
-
+	public void updateJPA(Persona entity) throws Exception {
+		try {
+			em.merge(entity);
+		} catch (Exception e) {
+			throw new Exception("Erro actualizar Cliente " + e.getMessage());
+		}
+	}
 	/**
 	 * Metodo de Borrar Datos
 	 * @param cedula
@@ -87,4 +101,29 @@ public class PersonaDAO {
 		q.setParameter(1, cedula);
 		return (List<Persona>) q.getResultList();
 	}
+	
+	/*public void guardaArchivo(String ruta) throws SQLException, FileNotFoundException
+	{
+	String sql = "INSERT INTO Documentos VALUES  (1,?)";
+	//Creamos una cadena para después prepararla
+	PreparedStatement stmt = con.prepareStatement(sql);
+	File archivo = new File(ruta);
+	//ruta puede ser: "c://archivo"
+	FileInputStream fis = new FileInputStream(archivo);
+	//Lo convertimos en un Stream
+	Object a = stmt.setBinaryStream(1, fis, (int) archivo.length());
+	//Asignamos el Stream al Statement
+	stmt.execute();
+	Documentos d=new Documentos();
+	d.setPdfC(fis);
+	}
+	public void insertD(Documentos persona) throws Exception {
+		try {
+			em.persist(persona);
+		} catch (Exception e) {
+			throw new Exception("Erro ingreso Cliente " + e.getMessage());
+
+		}
+	}*/
+	
 }

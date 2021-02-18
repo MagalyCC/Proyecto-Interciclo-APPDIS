@@ -1,5 +1,7 @@
 package ec.edu.ups.appdis.g1.vista;
 
+import java.util.Date;
+
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -8,6 +10,7 @@ import javax.inject.Named;
 import ec.edu.ups.appdis.g1.modelo.Persona;
 import ec.edu.ups.appdis.g1.negocio.CajeroON;
 import ec.edu.ups.appdis.g1.negocio.LoginON;
+import ec.edu.ups.appdis.g1.negocio.PolizaON;
 
 /**
  * 
@@ -20,6 +23,8 @@ import ec.edu.ups.appdis.g1.negocio.LoginON;
 public class LoginBean {
 	@Inject
 	private LoginON lo;
+	@Inject
+	private PolizaON po;
 	private String correo;
 	private String password;
 
@@ -29,6 +34,7 @@ public class LoginBean {
 
 	public void init() {
 		correo = new String();
+		
 	}
 
 	public String getCorreo() {
@@ -53,6 +59,7 @@ public class LoginBean {
 	}
 
 	public String doBuscar() {
+		po.pagarPoliza();
 		String ventana = null;
 		try {
 			int estado = lo.estado(correo);
@@ -86,5 +93,6 @@ public class LoginBean {
 
 	public String abrirVentana(String nombre) {
 		return nombre;
+		
 	}
 }

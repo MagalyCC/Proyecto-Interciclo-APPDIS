@@ -43,6 +43,7 @@ public class Transferencia implements Serializable{
 	@ManyToOne
 	@JoinColumn
 	private Cuenta cuentarecibe;
+	private String cuentaTercero;
 
 	/**
 	 * Generar Getters and Setters
@@ -52,6 +53,14 @@ public class Transferencia implements Serializable{
 
 	public int getIdCodigo() {
 		return idCodigo;
+	}
+
+	public String getCuentaTercero() {
+		return cuentaTercero;
+	}
+
+	public void setCuentaTercero(String cuentaTercero) {
+		this.cuentaTercero = cuentaTercero;
 	}
 
 	public void setIdCodigo(int idCodigo) {
